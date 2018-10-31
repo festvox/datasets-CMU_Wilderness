@@ -10,27 +10,27 @@ from New Testaments from http://www.bible.is/
 
 List of Languages with realtive scores of accuracy of alignment
 
-    http://festvox.org/cmu_wilderness/
+http://festvox.org/cmu_wilderness/
 
 Map of Languages geopistioned
 
-    http://festvox.org/cmu_wilderness/map.html
+http://festvox.org/cmu_wilderness/map.html
 
-Prerequisites
+# Prerequisites
 
-# Ubuntu (and related) prerequisites:
+Ubuntu (and related) prerequisites:
 
     sudo apt-get install git build-essential libncurses5-dev sox
     sudo apt-get install csh ffmpeg html2text
 
-Make Dependencies
+# Make Dependencies
 
 Builds the FestVox voice building tools in build/ and sets up the
 environment variable settings in festvox_env_settings
 
     ./bin/do_found make_dependencies
 
-Create an alignment for a language
+# Create Alignments For A Language
 
     nohup ./bin/do_found fast_make_align indices/NANTTV.tar.gz &
 
@@ -40,7 +40,7 @@ then reconstruct the algined data in NANTTV/aligned/wav and NANTTV/aligned/etc
 
 ...
 
-Create a Text to Speech model
+# Create Text To Speech Model
 
     cd NANTTV
     nohup ../bin/do_found make_tts &
@@ -50,7 +50,7 @@ While build a Random Forest Clustergen synthesis model for Festival
 and Flite in NANTTV/voices/ This will take at least 48 hours on a 12
 core machine.
 
-Create a Speech to Text model
+# Create Speech To Text Model
 
     cd NANTTV
     nohup ../bin/do_found make_asr &
