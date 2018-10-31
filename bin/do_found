@@ -1,0 +1,1314 @@
+#!/bin/sh
+###########################################################################
+##                                                                       ##
+##             Carnegie Mellon University, Pittsburgh, PA                ##
+##                     Copyright (c) 2017-2018                           ##
+##                       All Rights Reserved.                            ##
+##                                                                       ##
+##  Permission is hereby granted, free of charge, to use and distribute  ##
+##  this software and its documentation without restriction, including   ##
+##  without limitation the rights to use, copy, modify, merge, publish,  ##
+##  distribute, sublicense, and/or sell copies of this work, and to      ##
+##  permit persons to whom this work is furnished to do so, subject to   ##
+##  the following conditions:                                            ##
+##   1. The code must retain the above copyright notice, this list of    ##
+##      conditions and the following disclaimer.                         ##
+##   2. Any modifications must be clearly marked as such.                ##
+##   3. Original authors' names are not deleted.                         ##
+##   4. The authors' names are not used to endorse or promote products   ##
+##      derived from this software without specific prior written        ##
+##      permission.                                                      ##
+##                                                                       ##
+##  CARNEGIE MELLON UNIVERSITY AND THE CONTRIBUTORS TO THIS WORK         ##
+##  DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING      ##
+##  ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO EVENT   ##
+##  SHALL CARNEGIE MELLON UNIVERSITY NOR THE CONTRIBUTORS BE LIABLE      ##
+##  FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES    ##
+##  WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN   ##
+##  AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION,          ##
+##  ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF       ##
+##  THIS SOFTWARE.                                                       ##
+##                                                                       ##
+###########################################################################
+##                                                                       ##
+##          Author :  Alan W Black (awb@cs.cmu.edu)                      ##
+##                                                                       ##
+###########################################################################
+##                                                                       ##
+##  Building speech datasets form found data with audio and text         ##
+##  Will find alignments for approximate text/audio chunks such as audio ##
+##  books in new languages                                               ##
+##                                                                       ##
+##  A lot of the optimization has been done for religious texts from     ##
+##  Youtube.  The most polished and automatic creation of datasest is    ##
+##  From bible.is some 800+ low resource languages that now form part    ##
+##  of the CMU Wilderness Multilingual Speech Dataset                    ##
+##                                                                       ##
+##  If you just want the end speech databases you probably want to look  ##
+##  at Wilderness DB set, where the computational expensive alignment    ##
+##  task is already done <url>                                           ##
+##                                                                       ##
+##  Prerequistites                                                       ##
+##     Festvox Voice Building toolkit                                    ##
+##     http://festvox.org/                                               ##
+##                                                                       ##
+##  Because we cannot distribute the aligned data you have to download   ##
+##  the data itself and either rebuild the sentence level alignments     ##
+##  (which is computationally expensive) or use the existing align index ##
+##  files for the fast_make_align                                        ##
+##                                                                       ##
+##  If you are doing an existing Wilderness align index set              ##
+##  .../bin/do_found fast_make_align indices/CEBPRV.tar.gz               ##
+##  .../bin/do_found make_tts                                            ##
+##  .../bin/do_found make_asr                                            ##
+##                                                                       ##
+##  Or to do full alignment from the data                                ##
+##  .../bin/do_found full_make_align http://listen.bible.is/CEBRPV/Matt/1/D ##
+##  .../bin/do_found make_tts                                            ##
+##  .../bin/do_found make_asr                                            ##
+##                                                                       ##
+##  fast_make_align may take an hour or so as it still has to            ##
+##  prune silences                                                       ##
+##                                                                       ##
+##  full_make_align may take around 7 days on an 8 core machine:          ##
+##    download data
+##    convert downloaded data to "nice" text, and .wav format            ##
+##    prune non-speech from audio                                        ##
+##    split chapters into utterances with multi-lingual model            ##
+##    use baum-welch aligner (ehmm) to find bad aligned utts             ##
+##    build synthesis voice and resynthesize data to find bad utts       ##
+##    build new target-language acoustic model from "best" aligned utts  ##
+##    resplit chapters into utterances with target-languange model       ##
+##    build a synthesis voice and resynthesize data to assign confidence ##
+##                                                                       ##
+###########################################################################
+
+FFMPEG=avconc
+FFMPEG=ffmpeg
+
+# Set the FestVox environment variables
+if [ "$ESTDIR" = "" ]
+then
+    if [ -f festvox_env_settings ]
+    then
+        source festvox_env_settings
+    fi
+fi
+
+if [ "$1" = "check_dependencies" ]
+then
+    r=0
+
+    if [ -f ${ESTDIR}/bin/ch_wave ]
+    then
+        echo FOUND Edinburgh Speech Tools at $ESTDIR
+    else
+        echo NOTFOUND Edinburgh Speech Tools at $ESTDIR
+        r=1
+    fi
+
+    if [ -f ${ESTDIR}/../festival/bin/festival ]
+    then
+        echo FOUND Festival at $ESTDIR/../festival
+    else
+        echo NOTFOUND Festival at $ESTDIR/../festival
+        r=1
+    fi
+
+    if [ -f ${SPTKDIR}/bin/x2x ]
+    then
+        echo FOUND SPTK at $SPTKDIR
+    else
+        echo NOTFOUND SPTK at $SPTKDIR
+        r=1
+    fi
+
+    if [ -f ${FESTVOXDIR}/src/clustergen/setup_cg ]
+    then
+        echo FOUND FestVox Tools at $FESTVOXDIR 
+    else
+        echo NOTFOUND FestVox Tools at $FESTVOXDIR
+        r=1
+    fi
+
+    if [ -f ${FLITEDIR}/bin/build_flite ]
+    then
+        echo FOUND Flite at $FLITEDIR
+    else
+        echo NOTFOUND Flite at $FLITE
+        r=1
+    fi
+
+    f1=`which ffmpeg`
+    f2=`which sox`
+    f3=`which html2text`
+    if [ "$f1" = "" ]
+    then
+        echo NOTFOUND ffmpeg
+        r=1
+    else
+        echo FOUND ffmpeg at $f1
+    fi
+
+    if [ "$f2" = "" ]
+    then
+        echo NOTFOUND sox
+        r=1
+    else
+        echo FOUND sox at $f2
+    fi
+
+    if [ "$f3" = "" ]
+    then
+        echo NOTFOUND html2text
+        r=1
+    else
+        echo FOUND html2text at $f3
+    fi
+
+    exit $r
+fi
+
+# Always check dependencies and fail if they fail, and print the failure
+if ! $0 check_dependencies >/dev/null
+then
+    echo FAILED dependencies
+    $0 check_dependencies
+    exit 1
+fi
+
+if [ "$1" = "make_dependencies" ]
+then
+    if [ ! -d build ]
+    then
+        mkdir build
+    fi
+    cd build
+
+    # Get source (unstable)
+    git clone https://github.com/festvox/speech_tools
+    git clone https://github.com/festvox/festival
+    git clone https://github.com/festvox/festvox
+    git clone https://github.com/festvox/flite
+
+    wget http://festvox.org/packed/SPTK-3.6.tar.gz
+    tar zxvf SPTK-3.6.tar.gz
+
+    export ESTDIR=`pwd`/speech_tools
+    export FLITEDIR=`pwd`/flite
+    export FESTVOXDIR=`pwd`/festvox
+    export SPTKDIR=`pwd`/SPTK
+
+    # Compile source
+    mkdir SPTK
+    patch -p0 <festvox/src/clustergen/SPTK-3.6.patch 
+    cd SPTK-3.6
+    ./configure --prefix=$SPTKDIR
+    make
+    make install
+    cd ..
+
+    cd speech_tools
+    ./configure
+    make
+    make test
+    cd ..
+    
+    cd festival
+    ./configure
+    make
+    make default_voices
+    cd ..
+
+    cd festvox
+    ./configure
+    make
+    cd ..
+
+    cd flite
+    ./configure
+    make
+    cd ..
+
+    echo export ESTDIR=$ESTDIR  >../festvox_env_settings
+    echo export FLITEDIR=$FLITEDIR >>../festvox_env_settings
+    echo export FESTVOXDIR=$FESTVOXDIR >>../festvox_env_settings
+    echo export SPTKDIR=$SPTKDIR >>../festvox_env_settings
+
+    exit
+fi
+
+if [ "$1" = "do_all" ]
+then
+    # If this works all the way through you aren't trying a hard language
+    # Do the chapter segmentation and score alignments
+    $0 full_make_align $2
+    # Make a rfs voice from the best utterances
+    $0 make_tts
+    # Copy out Festival/flite voices for deployment
+    $0 get_voices
+
+    # Make a kaldi asr model from the good utterances
+    $0 make_asr
+
+    # Copy out sufficient files for fast_make_align
+    $0 make_distribution_files
+    # Collect stats on whole build
+    $0 summary >info
+
+    exit 0
+fi    
+
+if [ "$1" = "summary" ]
+then
+    # After full processing, and building voices, it generats a summary file
+    echo `cat download/languageid` `cat download/languagename`
+    echo Number of chapters `ls wav/*.wav | awk 'END {print NR}'`
+    pass=""
+    if [ -d v0 ]
+    then
+        echo Pass 0: number of utterances `cat v0/etc/txt.done.data.withnan | awk 'END {print NR}'`
+        echo Pass 0: number of utterances without nan `cat v0/etc/txt.done.data | awk 'END {print NR}'`
+        (cd v0; ./bin/find_db_duration etc/txt.done.data)
+        tail -2 v0/ehmm/mod/log100.txt
+        grep MCD v0/mcd-base.out
+        pass="Pass 1:"
+    fi
+    if [ -d v ]
+    then
+        echo $pass number of utterances `cat v/etc/txt.done.data.withnan | awk 'END {print NR}'`
+        (cd v; ./bin/find_db_duration etc/txt.done.data)
+        tail -2 v/ehmm/mod/log100.txt
+        grep MCD v/mcd-base.out
+        echo $pass number of utterances without nan `cat v/etc/txt.done.data | awk 'END {print NR}'`
+    fi
+    if [ -d v_rfs ]
+    then
+        echo RFS: number of utterances `cat v_rfs/etc/txt.done.data | awk 'END {print NR}'`
+        (cd v_rfs; ./bin/find_db_duration etc/txt.done.data)
+        tail -2 v_rfs/ehmm/mod/log100.txt
+        grep MCD v_rfs/mcd-*.out
+    fi        
+
+    exit 0
+fi
+
+if [ "$1" = "get_from_youtube" ]
+then
+   yt_list=$2
+
+   if [ ! -f mp4 ]
+   then
+      mkdir mp4
+   fi
+
+   cat $yt_list |
+   while read yt
+   do
+       fileid=`echo $yt | awk '{print $1}'`
+       url=`echo $yt | awk '{print $2}'`
+       youtube-dl -f 18 $url -o mp4/$fileid.mp4
+   done
+
+   exit 0
+
+fi
+
+if [ "$1" = "get_from_bibleis" ]
+then
+    ## For bible.is, this is what has been collected in the Wilderness DB
+    #uuu=http://listen.bible.is/CEBRPV/Matt/1/D
+    uuu=$2
+
+    if [ ! -d download ]
+    then
+        mkdir -p download/mp3
+        mkdir -p download/txt
+        mkdir -p download/html
+    fi
+    echo $uuu >download/starturl
+    wget -O xxx.html $uuu
+    grep "var languageName" xxx.html | sed 's/^[^"]*"//;s/".*$//' >download/languagename
+    grep "var damIdBase" xxx.html | sed 's/^[^"]*"//;s/".*$//' >download/languageid
+    rm -f xxx.html
+
+    while /bin/true
+    do
+        wget -O xxx.html $uuu
+        mp3=`grep audioUrl xxx.html | sed 's/[^"]*"//;s/";.*$//'`
+        echo $mp3
+        if [ "$mp3" = "" ]
+        then
+            rm -f xxx.html yyy.html
+            exit
+        fi
+        fname=`basename $mp3 .mp3`
+        echo $fname >>download/flist
+        cp -pr xxx.html download/html/$fname.html
+        wget -O download/mp3/$fname.mp3 http:$mp3
+        grep 'id="chapter-content"' xxx.html | sed 's/<[^>]*>/ /g' | sed 's/Copyrighted Material.*$//' >download/txt/$fname.txt
+        
+        next=`grep 'id="next-chapter-link"' xxx.html | sed 's/.*next-chapter-link.><a href=.//;s/".*$//'`
+        lnext=$next
+        uuu=http://listen.bible.is$next
+        echo $uuu >>yyy.html
+        if [ "$next" = "" ]
+        then
+            rm -f xxx.html yyy.html
+            exit
+        fi
+        if [ "$lnext" = "next" ]
+        then
+            rm -f xxx.html yyy.html
+            exit
+        fi
+        rm -f xxx.html
+    done
+    rm -f yyy.html
+    exit 0
+fi    
+
+if [ "$1" = "mp4_to_wav" ]
+then
+   if [ ! -f wav ]
+   then
+      mkdir wav
+   fi
+
+   for i in $*
+   do
+       fname=`basename $i .mp4`
+       $FFMPEG -i $i $fname.wav
+       sox $fname.wav -r 16000 wav/$fname.wav remix -
+       rm -f $fname.wav
+   done
+
+   exit 0
+fi
+
+if [ "$1" = "mp3_to_wav" ]
+then
+   if [ ! -f wav ]
+   then
+      mkdir wav
+   fi
+
+   for i in $*
+   do
+       fname=`basename $i .mp3`
+       $FFMPEG -i $i $fname.wav
+       sox $fname.wav -r 16000 wav/$fname.wav remix -
+       rm -f $fname.wav
+   done
+
+   exit 0
+fi
+
+if [ "$1" = "prune_silences" ]
+then
+    # Remove leading/trailing silences, and within-file ones too
+    # Uses an F0 extractor to find the speech (and hence the non-speech)
+    mkdir ps
+    cd ps
+    $FESTVOXDIR/src/clustergen/setup_cg ps ps ps 
+    ln ../wav/*.wav wav
+    ls wav/*.wav | sed 's/^wav./( /;s/.wav$/ "" )/' >etc/txt.done.data
+
+    ./bin/prune_silence etc/txt.done.data
+    ./bin/prune_middle_silences etc/txt.done.data
+
+    cd ..
+    mv wav wav_unpruned
+    mkdir wav
+    ln ps/wav/*.wav wav
+    
+    exit 0
+fi    
+
+if [ "$1" = "txt_from_bibleis_txt" ]
+then
+    if [ ! -d txt ]
+    then
+        mkdir txt
+    fi
+
+    for i in $*
+    do
+       echo $i
+       cat $i |
+           html2text -utf8 |
+           sed -e 'y/\t/\n/' |
+           awk '{for (i=1; i<=NF; i++)
+                 {
+                    if ($i ~ /[0-9][0-9]*/ )
+                       printf("\n\n");
+                    printf("%s ",$i);
+                 }}
+                 END {printf("\n\n")}' |
+           tr -d [0-9] >txt/`basename $i`
+    done
+
+    exit 0
+fi   
+
+if [ "$1" = "ltf_to_ttd" ]
+then
+   if [ ! -d data ]
+   then
+      mkdir data
+   fi
+
+   for i in $2
+   do
+       fname=`basename $i .ltf.xml`
+       grep ".ORIGINAL_TEXT>" $i |
+           sed 's/<ORIGINAL_TEXT>//;s+</ORIGINAL_TEXT>++' |
+           sed 's/\\/\\\\/g;s/"/\\"/g' |
+           awk '{printf("( '$fname'_%03d \"",NR);
+                 for (i=1; i<=NF; i++)
+                    printf("%s ",$i);
+                 printf("\" )\n")}' >data/$fname.data
+   done
+
+   exit 0
+fi
+
+if [ "$1" = "bbs_to_tdd_chap" ]
+then
+    BIBLES=/home/awb/data/lorelei/bibles/bible-corpus/bible-corpus-1.11/bibles/
+    BIBLE=$2
+    CHAP=$3
+
+    cat $BIBLE |
+        awk '{if (($1 == "<div") && ($2=="id=\"'$CHAP'\""))
+              {
+                doit=1;
+              }
+              if ($1== "</div>")
+              {
+                doit=0;
+              }
+              if (doit==1)
+                print $0}' |
+        sed 's/<[^>]*>//g' >txt/$CHAP.txt
+    cat txt/$CHAP.txt |
+       awk '{if ($NF > 0) print $0}' |
+           awk '{printf("( '$CHAP'_%03d \"",NR);
+                 for (i=1; i<=NF; i++)
+                    printf("%s ",$i);
+                 printf("\" )\n")}' >data/$CHAP.data
+
+   exit 0
+fi
+
+if [ "$1" = "opl_to_tdd_chap" ]
+then
+    BIBLES=/home/awb/data/lorelei/bibles/bible-corpus/bible-corpus-1.11/bibles/
+    BIBLE=$2
+    CHAP=$3
+
+    cat txt/$CHAP.txt |
+       awk '{if ($NF > 0) print $0}' |
+           awk '{printf("( '$CHAP'_%03d \"",NR);
+                 for (i=1; i<=NF; i++)
+                    printf("%s ",$i);
+                 printf("\" )\n")}' >data/$CHAP.data
+
+   exit 0
+fi
+
+if [ "$1" = "bbs_to_tdd_book" ]
+then
+    BIBLES=/home/awb/data/lorelei/bibles/bible-corpus/bible-corpus-1.11/bibles/
+    BIBLE=$2
+    CHAP=$3
+
+    cat $BIBLE |
+        awk '{if (($1 == "<div") && ($2=="id=\"'$CHAP'\""))
+              {
+                doit=1;
+              }
+              if ($1== "</div>")
+              {
+                doit=0;
+              }
+              if (doit==1)
+                print $0}' |
+        sed 's/<[^>]*>//g' >txt/$CHAP.txt
+    cat txt/$CHAP.txt |
+       awk '{if ($NF > 0) print $0}' |
+           awk '{printf("( '$CHAP'_%03d \"",NR);
+                 for (i=1; i<=NF; i++)
+                    printf("%s ",$i);
+                 printf("\" )\n")}' >data/$CHAP.data
+
+   exit 0
+fi
+
+if [ "$1" = "bbs_to_tdd" ]
+then
+    BIBLES=/home/awb/data/lorelei/bibles/bible-corpus/bible-corpus-1.11/bibles/
+    BIBLE=$2
+    YTLIST=$3
+
+    if [ ! -d data ]
+    then
+        mkdir data
+    fi
+    if [ ! -d txt ]
+    then
+        mkdir txt
+    fi
+
+    awk '{print $1}' $YTLIST |
+        while read x
+        do
+            echo $x
+            $0 bbs_to_tdd_chap $BIBLE $x
+        done
+
+   exit 0
+fi
+
+if [ "$1" = "txt_to_ttd" ]
+then
+   if [ ! -d data ]
+   then
+      mkdir data
+   fi
+   shift
+
+   for i in $*
+   do
+       fname=`basename $i .txt`
+       echo $fname
+       $FESTVOXDIR/src/promptselect/text2utts -dbname $fname -all $i -o data/$fname.data
+   done
+
+   exit 0
+fi
+
+if [ "$1" = "lines_to_ttd" ]
+then
+   if [ ! -d data ]
+   then
+      mkdir data
+   fi
+   shift
+
+   for i in $*
+   do
+       fname=`basename $i .txt`
+       $FESTVOXDIR/s
+       echo $fname
+       cat $i | sed 's/"/\\"/g' |
+       awk '{if ($NF > 0) print $0}' |
+           awk '{printf("( '$fname'_%03d \"",NR);
+                 for (i=1; i<=NF; i++)
+                    printf("%s ",$i);
+                 printf("\" )\n")}' >data/$fname.data
+   done
+
+   exit 0
+fi
+
+##  Aligning functions
+
+if [ "$1" = "v_init" ]
+then
+    # Make a base voice build voice directory for Grapheme analysis
+    # and set up for interslice segmentatons
+    mkdir v
+    cd v
+    $FESTVOXDIR/src/clustergen/setup_cg v v v
+    cat ../data/*.data >etc/txt.done.data
+    $FESTVOXDIR/src/grapheme/make_cg_grapheme
+    mkdir is
+    mkdir is_do
+    cd is
+    $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh setup ml_model
+
+    exit 0
+fi
+
+if [ "$1" = "v_init_indic" ]
+then
+    # Make a base voice build voice directory for Grapheme analysis
+    # and set up for interslice segmentatons
+    # Same as v_init, but for indic voices
+    mkdir v
+    cd v
+    $FESTVOXDIR/src/clustergen/setup_cg_indic v indic hin v
+    cat ../data/*.data >etc/txt.done.data
+    mkdir is
+    mkdir is_do
+    cd is
+    $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh setup ml_model
+
+    exit 0
+fi
+
+if [ "$1" = "v_reinit_target_lang" ]
+then
+    # Reinitialize a v/ voice directory with the built ehmm acoustic model
+    # from the current v/ voice.  This is used for going from the cross-lingual
+    # acoustic models to the in-language models (pass #0 vs pass #1)
+    mv v v0
+    $0 v_init
+    cd v0
+    ./bin/do_build parallel build_prompts etc/txt.done.data.uu
+    ./bin/do_build label etc/txt.done.data.uu >label.out
+    $FESTVOXDIR/src/ehmm/bin/do_ehmm oldfeats
+
+    cp -pr ehmm/mod/global_mn_vr.txt ehmm/mod/model101.txt ehmm/etc/ph_list.int ../v/is/etc
+
+    exit 0
+fi
+
+if [ "$1" = "v_rm_nan_aligned" ]
+then
+    # Remove utterance that give NaN in alignment in ehmm
+    cd v
+    ./bin/do_build parallel build_prompts etc/txt.done.data
+    ./bin/do_build label >label.out
+    $FESTVOXDIR/src/ehmm/scripts/rm_nan_utts label.out etc/txt.done.data
+    ./bin/reduce_prompts etc/txt.done.data lab/*.lab >xxx.data
+    mv xxx.data etc/txt.done.data
+
+    echo LOG from `cat etc/txt.done.data.withnan | wc -l` to `cat etc/txt.done.data | wc -l`
+
+    exit
+fi
+
+if [ "$1" = "v_islice" ]
+then
+    # Do the slicing (segment the long audio with interslice)
+    YTLIST=$2
+
+    awk '{print $1}' $YTLIST |
+        while read x
+        do
+            echo $x
+            $0 v_islice_chap $x
+        done
+
+    exit 0
+fi
+
+if [ "$1" = "v_islice_para" ]
+then
+    # Do the slicing in parallel for N cpus
+    YTLIST=$2
+    NUMCPUS=$3
+    YTLISTFNAME=`basename $YTLIST`
+
+    if [ ! -d parts ]
+    then
+        mkdir parts
+    fi
+    split --number=r/$NUMCPUS $YTLIST parts/$YTLISTFNAME.
+
+    ls parts/$YTLISTFNAME.* | xargs -n 1 -P $NUMCPUS $0 v_islice
+
+    exit 0
+    for i in parts/$YTLISTFNAME.*
+    do
+        $0 v_islice $i &
+    done
+
+    exit 0
+fi
+
+if [ "$1" = "v_check_for_aligned_utts" ]
+then
+    # Used when running the core utterance aligned to check how many were
+    # found
+
+    echo -n "Chapters " 
+    ls -d v/is_do/*/twav | wc -l
+    echo -n "Utts     "
+    ls -d v/is_do/*/twav/*.wav | wc -l
+
+    exit 0
+fi
+
+if [ "$1" = "v_islice_chap" ]
+then
+    CHAP=$2
+    cd v/is_do
+    mkdir $CHAP
+    cp -pr ../is/* $CHAP
+    cd $CHAP
+    cp -pr ../../../data/$CHAP.data etc/txt.done.data
+    $ESTDIR/bin/ch_wave -start 0 ../../../wav/$CHAP.wav -o bwav/bwav.wav
+    
+    $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh phseq_lang ../..
+    $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh phseqint
+    $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh doseg
+    $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh slice
+
+    exit 0
+fi
+
+if [ "$1" = "v_islice_chap_guess" ]
+then
+    CHAP=$2
+    OFFSET=$3 
+    cd v/is_do
+    mkdir $CHAP
+    cp -pr ../is/* $CHAP
+    cd $CHAP
+    cp -pr ../../../data/$CHAP.data etc/txt.done.data
+    $ESTDIR/bin/ch_wave -start $OFFSET ../../../wav/$CHAP.wav -o bwav/bwav.wav
+    
+    $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh phseq_lang ../..
+    $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh phseqint
+    $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh doseg
+    $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh slice
+
+    exit 0
+fi
+
+if [ "$1" = "v_collect" ]
+then
+    # Once islice_para is complete pull up all the segmented utts into
+    # the main voice (this is the reduce part to the map part)
+    cd v
+
+    # Have to remove "." from fileids, replace them with _
+    cat ../data/*.data |
+        awk '{gsub(/\./,"_",$2);
+              printf("( %s ",$2);
+              for (i=3; i<=NF; i++)
+                 printf("%s ",$i);
+              printf("\n");}' >etc/txt.done.data.all
+    for i in is_do/*
+    do
+        ln $i/twav/*.wav wav
+    done
+    # waveform files names cannot contain "." in the filename part
+#    for i in wav/*.wav
+#    do
+#        mv $i wav/`basename $i .wav | sed 's/\./_/g'`.wav
+    #    done
+    # Get rid of short utterances (under 0.50 seconds)
+    for i in wav/*.wav
+    do
+        ddd=`ls -al $i | awk '{ if ($5 < 16000) print "delete" }'`
+        if [ "$ddd" = "delete" ]
+        then
+            rm -rf $i
+        fi
+    done
+    
+    ./bin/reduce_prompts etc/txt.done.data.all wav/*.wav >etc/txt.done.data
+
+    echo LOG `cat etc/txt.done.data | wc -l` utterances
+    echo LOG `./bin/find_db_duration etc/txt.done.data`
+    
+    exit 0
+fi
+
+if [ "$1" = "v_build" ]
+then
+    # Build a (simple) synthetic voice for align checking (or actual use)
+    cd v
+
+    ./bin/build_cg_voice
+
+    echo LOG `grep MCD mcd-base.out`
+
+    exit 0
+fi
+
+if [ "$1" = "v_check" ]
+then
+    # Resynthesis the data set and score it by how well it resynthesizes
+    cd v
+
+    ./bin/do_clustergen parallel utt_by_utt etc/txt.done.data
+    ./bin/do_clustergen utt_by_utt_score etc/txt.done.data
+
+    exit 0
+fi
+
+if [ "$1" = "make_asr" ]
+then
+    # We generate a WORD transcription file (no punctuation) and a
+    # pronunciation lex for ASR training
+
+    if [ ! -d v_asr ]
+    then
+        mkdir v_asr
+        cd v_asr
+        $FESTVOXDIR/src/clustergen/setup_cg v v v
+        cat ../aligned/etc/txt.done.data >etc/txt.done.data
+        $FESTVOXDIR/src/grapheme/make_cg_grapheme
+        cd ..
+    fi
+    cd v_asr
+    mkdir asr
+
+    ./bin/do_build parallel build_prompts etc/txt.done.data
+#    ./bin/do_build build_prompts etc/txt.done.data
+
+    cat >asr.scm <<EOF
+(define (do_utt utt)
+  (mapcar
+   (lambda (w)
+     (format trfd "%s " (item.name w))
+     (format lexfd "%s " (item.name w))
+     (mapcar 
+      (lambda (syl)
+        (mapcar
+         (lambda (seg)
+           (format lexfd "%s " (item.name seg)))
+         (item.relation.daughters syl 'SylStructure)))
+      (item.relation.daughters w 'SylStructure))
+     (format lexfd "\n"))
+   (utt.relation.items utt 'Word))
+  (format trfd "\n"))
+
+(define (do_it ttd)
+  (set! trfd (fopen "asr/transcription_nopunc.txt" "w"))
+  (set! lexfd (fopen "asr/alllex" "w"))
+  (mapcar
+   (lambda (xxx)
+     (set! utt1 (utt.load nil (format nil "prompt-utt/%s.utt" (car xxx))))
+     (format trfd "%s " (car xxx))
+     (do_utt utt1)
+     t)
+   (load ttd t))
+  (fclose trfd)
+  (fclose lexfd)
+  t)
+EOF
+    $ESTDIR/../festival/bin/festival -b asr.scm '(do_it "etc/txt.done.data")'
+
+    sort -u asr/alllex >asr/pronunciation.lex
+    rm -f asr/alllex
+
+    cp -pr asr ../asr_files/
+
+    cd ..
+
+    exit 0
+fi
+
+if [ "$1" = "gen_lex" ]
+then
+    # Generate a pronunciation lexicon for the file of random text in a language
+    txtfile=$2
+
+    exit 0
+fi
+
+if [ "$1" = "make_tts" ]
+then
+    # Build a full TTS rfs voice from the best aligned utterances
+    VLANG=$2
+    VSPK=$3
+    mkdir v_rfs
+    if [ $# = 1 ]
+    then
+        if [ -f aligned/etc/languageid ]
+        then
+            # try to get a C variable name for the language
+            VLANG=`cat aligned/etc/languageid | tr A-Z a-z | awk '{print substr($1,1,3)}'`
+            VSPK=`cat aligned/etc/languageid | tr A-Z a-z | awk '{print substr($1,4)}'`
+        fi
+    fi
+    if [ "$VLANG" = "" ]
+    then
+        VLANG=rt
+    fi
+    if [ "$VSPK" = "" ]
+    then
+        VSPK=rt
+    fi
+
+    cd v_rfs
+    $FESTVOXDIR/src/clustergen/setup_cg cmu $VLANG $VSPK
+    # Take up to 2000 of the best 85%
+    if [ -f ../aligned/etc/txt.done.data.rfs ]
+    then
+        cp -pr ../aligned/etc/txt.done.data.rfs etc/txt.done.data
+    else
+        awk '{if ($(NF-1) !~ /nan/) print $(NF-1),$0}' ../aligned/etc/txt.done.data |
+            sort -n |
+            head -2000 |
+            sed 's/^[^(]*(/(/' | sort >etc/txt.done.data
+    fi
+    awk '{print $2}' etc/txt.done.data |
+        while read x
+        do
+            ln ../aligned/wav/$x.wav wav
+        done
+    $FESTVOXDIR/src/grapheme/make_cg_grapheme
+
+    ./bin/build_cg_rfs_voice
+    cd ..
+
+
+    # If we don't have a ttd for rfs in the aligned directory add it
+    if [ ! aligned/etc/txt.done.data.rfs ]
+    then
+        cp -pr v_rfs/etc/txt.done.data aligned/etc/txt.done.data.rfs
+    fi
+    
+    exit 0
+fi
+
+if [ "$1" = "tidy_up" ]
+then
+    # Get back some disk space.  A build can easily be 120GB, this will clear
+    # 100GB without removing anything important
+   rm -rf ps/unpruned/wav
+   rm -rf ps/ssil/wav
+
+   (cd v0/is_do && rm -rf */feat/*)
+   (cd v0/is_do && rm -rf */bwav/*)
+   (cd v0/is_do && rm -rf */twav/*)
+   (cd v0/is_do && rm -rf */tmp/*)
+   (cd v0/is_do && rm -rf */tmpa.txt)
+   (cd v/is_do && rm -rf */feat/*)
+   (cd v/is_do && rm -rf */bwav/*)
+   (cd v/is_do && rm -rf */twav/*)
+   (cd v/is_do && rm -rf */tmp/*)
+   (cd v/is_do && rm -rf */tmpa.txt)
+
+   (cd v ;
+       rm -rf test/all/*.mcep test/all/*.wav ;
+       rm -rf ehmm/feat ehmm/bin/feat;
+       rm -rf ccoefs/* ;
+       rm -rf mcep_deltas/* ;
+       rm -rf mcep_sptk/* ;
+       rm -rf festival/utts_hmm/* ;
+       rm -rf festival/disttabs/* ;
+       rm -rf festival/feats/* ;
+       rm -rf festival/dur/feats/* ;
+       rm -rf festival/dur/data/* )
+
+   (cd v0 ;
+       rm -rf test/all/*.mcep test/all/*.wav ;
+       rm -rf ehmm/feat ehmm/bin/feat;
+       rm -rf ccoefs/* ;
+       rm -rf mcep_deltas/* ;
+       rm -rf mcep_sptk/* ;
+       rm -rf festival/utts_hmm/* ;
+       rm -rf festival/disttabs/* ;
+       rm -rf festival/feats/* ;
+       rm -rf festival/dur/feats/* ;
+       rm -rf festival/dur/data/* )
+
+   (cd v_rfs ;
+       rm -rf test/all/*.mcep test/all/*.wav ;
+       rm -rf ehmm/feat ehmm/bin/feat;
+       rm -rf ccoefs/* ;
+       rm -rf mcep_deltas/* ;
+       rm -rf mcep_sptk/* ;
+       rm -rf festival/utts_hmm/* ;
+       rm -rf festival/disttabs/* ;
+       rm -rf festival/feats/* ;
+       rm -rf festival/dur/feats/* ;
+       rm -rf festival/dur/data/* )
+
+   (cd v_rfs ;
+       rm -rf test/cgp? test/cgp?? ;
+       rm -rf test/tts? test/tts?? ;
+       rm -rf test/cgp_rf_* ;
+       rm -rf all_rf/* )
+
+    cd v_rfs
+       cd rf_models
+       mkdir keep
+       for i in `cat mlist mlistf0`
+       do
+          cp -pr trees_$i keep
+       done	 
+       rm -rf trees_*
+       mv keep/* .
+       rmdir keep
+       cd ..
+       (cd flite && make clean)
+       (cd flite_base && make clean)
+    cd ..
+
+    exit 0
+fi	
+
+if [ "$1" = "get_aligned" ]
+then
+    # Extract the aligned files, and transcription files from
+    # the build voices
+    if [ ! -d aligned ]
+    then
+        mkdir aligned
+        mkdir aligned/etc
+        mkdir aligned/wav
+    fi
+
+    if [ -f download/languagename ]
+    then
+        cp -pr download/languagename aligned/etc
+        cp -pr download/languageid aligned/etc
+    fi
+
+    if [ -f v/etc/txt.done.data.uu ]
+    then
+        for i in `awk '{print $2}' v/etc/txt.done.data.uu`
+        do
+            ln v/wav/$i.wav aligned/wav/
+        done
+        cp -pr v/etc/txt.done.data.uu aligned/etc/txt.done.data
+        awk '{print $2}' aligned/etc/txt.done.data >x1
+        sed 's/^[^"]*"//;s/"[^"]*$//' aligned/etc/txt.done.data >x2
+        paste x1 x2 | awk '{for (i=1; i<=NF; i++) printf("%s ",$i); printf("\n")}' >aligned/etc/transcription.txt
+        for i in `cat x1`
+        do
+            sox aligned/wav/$i.wav -n stat 2>&1 | awk '{if ($1 == "Length") print $NF}'
+        done >x2
+        paste x1 x2 | awk '{print $1,$1,"0.0",$2}' >aligned/etc/segments
+        rm -f x1 x2
+        
+    fi
+
+    if [ -f v_rfs/etc/txt.done.data ]
+    then
+        cp -pr v_rfs/etc/txt.done.data aligned/etc/txt.done.data.rfs
+    fi
+
+    exit 0
+fi
+
+if [ "$1" = "get_voices" ]
+then
+    # Pull out the Festival and Flite voices ready for distribution
+    # Also generate some example synthesis files.
+    if [ ! -d voices ]
+    then
+        mkdir voices
+    fi
+    if [ -f v_rfs/flite/*.flitevox ]
+    then
+        cp -pr `ls -t v_rfs/flite/*.flitevox | head -1` voices
+        cp -pr v_rfs/festvox*.gz voices
+        if [ -f downloads/languagename ]
+        then
+            $FLITEDIR/bin/flitevox_info -voice voices/*.flitevox -set description -val "Wilderness "`cat download/languageid`" "`cat download/languagename`" from Bible.is"
+        fi
+
+        ## ERROR Should be Festival-generated not Flite-generated
+        # Synth examples
+        mkdir voices/examples
+        head -10 v_rfs/etc/txt.done.data.test |
+            tee voices/examples/test.data |
+            while read x
+            do
+                fileid=`echo $x | awk '{print $2}'`
+                echo $x | sed 's/^[^"]*"//;s/"[^"]*$//' >voices/examples/$fileid.txt
+                $FLITEDIR/bin/flite -voice voices/*.flitevox -ps -f voices/examples/$fileid.txt voices/examples/$fileid.wav >voices/examples/$fileid.seg
+            done
+
+        # For bible.is dbs get the first 10 verses of Matt 1
+        matt1=`ls data/B01___01*.data | head -1`
+        if [ -f "$matt1" ]
+        then
+            mkdir voices/examples_matt
+            head -10 $matt1 |
+            tee voices/examples_matt/test.data |
+            while read x
+            do
+                fileid=`echo $x | awk '{print $2}'`
+                echo $x | sed 's/^[^"]*"//;s/"[^"]*$//' >voices/examples_matt/$fileid.txt
+                $FLITEDIR/bin/flite -voice voices/*.flitevox -ps -f voices/examples_matt/$fileid.txt voices/examples_matt/$fileid.wav >voices/examples_matt/$fileid.seg
+            done
+        fi
+    fi
+    
+    exit 0
+fi
+
+if [ "$1" = "make_distribution_files" ]
+then
+    # The main distributable files for reconstruction of aligned/*
+    # This allows others to recreate the aligned files without doing
+    # the whole expensive computational process
+    languageid=`cat download/languageid`
+    if [ ! -d $languageid ]
+    then
+        mkdir $languageid
+    fi
+
+    cp -pr download/languageid $languageid
+    cp -pr download/languagename $languageid
+    cp -pr download/starturl $languageid
+
+    awk '{print $2}' v/etc/txt.done.data.uu |
+        while read x
+        do
+            gfileid=`echo $x | sed 's/_[0-9][0-9][0-9][0-9][0-9]$//'`
+            echo -n "$gfileid "
+            grep "^$x " v/is_do/$gfileid/etc/tlog.txt | head -1
+        done |
+        awk '{if (NF > 1) print $0}' >$languageid/$languageid.segments
+    awk '{print $2,$(NF-1)}' v/etc/txt.done.data.uu >$languageid/$languageid.scores
+    awk '{print $2}' v_rfs/etc/txt.done.data >$languageid/$languageid.rfs
+    
+    exit 0
+fi
+
+if [ "$1" = "fast_make_align" ]
+then
+    # Make the aligned directory from premade files rather than whole
+    # computational process
+    tarfilep=`echo $2 | awk '{p=".*/[A-Z].....\\\\.tar\\\\.gz$"; if ($1 ~ p) print "true"; else print "false"}'`
+
+    if [ "$tarfilep" = "true" ]
+    then
+        tar zxvf $2
+        languageid=`basename $2 .tar.gz`
+        cd $languageid
+        mydir=`pwd`
+        this=`echo $mydir $0 | awk '{if (substr($2,1,1) == "/") print $2; else printf("%s/%s\n",$1,$2)}'`
+    else
+        languageid=$2
+    fi
+
+    if [ ! -f $languageid/starturl ]
+    then
+        echo 'Cannot find $2/starturl file to fast align'
+        exit 1
+    fi
+
+    # We might have already downloaded the data, if so copy it
+    if [ -d ../downloads/$languageid/download ]
+    then
+        cp -pr ../downloads/$languageid/download .
+    fi
+
+    if [ ! -d download ]
+    then
+        $this get_from_bibleis `cat $languageid/starturl`
+    fi
+
+    if [ ! -d wav ]
+    then
+        $this mp3_to_wav download/mp3/*.mp3
+        $this txt_from_bibleis_txt download/txt/*.txt
+        $this txt_to_ttd txt/*.txt
+        $this prune_silences
+    fi
+
+    # Reconstruct the aligned files and info files
+    mkdir -p v/etc
+    mkdir -p v/wav
+
+    if [ ! -f $languageid/$languageid.segments ]
+    then
+        echo 'Cannot find $languageid/$languageid.segments file to fast align'
+        exit 1
+    fi
+
+    cat $languageid/$languageid.segments |
+        awk '{printf("sox wav/%s.wav v/wav/%s.wav trim %s %s\n",$1,$2,$3,$4-$3)}' | sh -v
+
+    paste $languageid/$languageid.segments $languageid/$languageid.scores |
+        while read x
+        do
+            bfileid=`echo $x | awk '{print $1}'`
+            fileid=`echo $x | awk '{print $2}'`
+            fdur=`echo $x | awk '{print $4-$3}'`
+            score=`echo $x | awk '{print $NF}'`
+            lll=`grep "( $fileid " data/$bfileid.data | head -1 | sed 's/ )$//'`
+            echo $lll $dur $score ")"
+        done >v/etc/txt.done.data.uu
+    
+    $this get_aligned
+
+    paste $languageid/$languageid.rfs |
+        while read x
+        do
+            grep "( $x " v/etc/txt.done.data.uu
+        done >aligned/etc/txt.done.data.rfs
+
+    exit 0
+fi
+
+if [ "$1" = "full_make_align" ]
+then
+    # This is a big process, that can take 6 days on a 8-thread machine
+    #starturl=http://listen.bible.is/CEBRPV/Matt/1/D
+    starturl=$2
+    languageid=`echo $2 | sed 's/^.*bible.is.//;s+/.*$++'`
+
+    # In case we are already in a sub directory
+    if [ ! -d download ]
+    then
+        mkdir $languageid
+        cd $languageid
+        mydir=`pwd`
+        this=`echo $mydir $0 | awk '{if (substr($2,1,1) == "/") print $2; else printf("%s/%s\n",$1,$2)}'`
+    fi
+
+    # We might have already downloaded the data, if so copy it
+    if [ -d ../downloads/$languageid/download ]
+    then
+        cp -pr ../downloads/$languageid/download .
+    fi
+
+    if [ ! -d download ]
+    then
+        $this get_from_bibleis $2
+    fi
+
+    # Convert downloaded mp3s and txt into our format
+    $this mp3_to_wav download/mp3/*.mp3
+    $this txt_from_bibleis_txt download/txt/*.txt
+    $this txt_to_ttd txt/*.txt
+
+    # Remove some extra silence from the waveforms
+    $this prune_silences
+
+    # Pass 0 (in v/ but becomes v0/)
+    # First slicing with crosslingual acoustic model
+    $this v_init
+    # Might be extra char mapping required (only rarely)
+    if [ -f download/v_v_v_char_phone_map.scm ]
+    then
+        cp -pr download/v_v_v_char_phone_map.scm v/festvox
+    fi
+    # Utterance slicing
+    $this v_islice_para download/flist `v/bin/find_num_available_cpu`
+    # Collect sliced utts
+    $this v_collect
+
+    # Pass 1 (v/)
+    # Do some alignment checks to remove outliers
+    $this v_rm_nan_aligned
+    # Build a synthetic voice
+    $this v_build
+    # Resynthesize each utt and score how well it synthesizes
+    $this v_check
+
+    # Reslice with first level target-language language model
+    # movec v/ to v0/ and starts again with better acoustic model
+    $this v_reinit_target_lang
+    $this v_islice_para download/flist `v/bin/find_num_available_cpu`
+    $this v_collect
+
+    # Remove illaligned, build voice and remove utts that don't synthesis well
+    $this v_rm_nan_aligned
+    $this v_build
+    $this v_check
+
+    # Put the files into the aligned/ directory
+    $this get_aligned
+
+    exit 0
+fi
+
+echo $0 unknown option: $1
+
+exit 1
+
