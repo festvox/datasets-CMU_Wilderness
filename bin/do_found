@@ -1170,7 +1170,7 @@ then
         languageid=`basename $2 .tar.gz`
         cd $languageid
         mydir=`pwd`
-        this=`echo $mydir $0 | awk '{if (substr($2,1,1) == "/") print $2; else printf("%s/%s\n",$1,$2)}'`
+        this=`echo $mydir $0 | awk '{if (substr($2,1,1) == "/") print $2; else printf("%s/../%s\n",$1,$2)}'`
     else
         languageid=$2
     fi
@@ -1248,7 +1248,7 @@ then
         mkdir $languageid
         cd $languageid
         mydir=`pwd`
-        this=`echo $mydir $0 | awk '{if (substr($2,1,1) == "/") print $2; else printf("%s/%s\n",$1,$2)}'`
+        this=`echo $mydir $0 | awk '{if (substr($2,1,1) == "/") print $2; else printf("%s/../%s\n",$1,$2)}'`
     fi
 
     # We might have already downloaded the data, if so copy it
