@@ -43,6 +43,10 @@ Ubuntu (and related) prerequisites:
     sudo apt-get install git build-essential libncurses5-dev sox
     sudo apt-get install csh ffmpeg html2text
 
+Note that the ffmpeg package is sometimes called avconv (you need
+to update bin/do_found accordingly if you only have avconv and not
+ffmpeg).
+
 # Make Dependencies
 
 Builds the FestVox voice building tools in build/ and sets up the
@@ -116,7 +120,7 @@ This dataset was prepared by Alan W Black (awb@cs.cmu.edu) with substantial
 help from a large number of CMU students.  We also would like to thank
 various members of the CMU community, especially Florian Metze, for access
 to CPU resources to help calculate the alignments.  This work was in part
-funded by the DARPA Lorelai Program.
+funded by the DARPA Lorelei Program.
 
 
 
