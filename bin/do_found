@@ -1163,6 +1163,7 @@ then
     # Make the aligned directory from premade files rather than whole
     # computational process
     tarfilep=`echo $2 | awk '{p=".*/[A-Z].....\\\\.tar\\\\.gz$"; if ($1 ~ p) print "true"; else print "false"}'`
+    this=$0
 
     if [ "$tarfilep" = "true" ]
     then
@@ -1241,6 +1242,7 @@ then
     #starturl=http://listen.bible.is/CEBRPV/Matt/1/D
     starturl=$2
     languageid=`echo $2 | sed 's/^.*bible.is.//;s+/.*$++'`
+    this=$0
 
     # In case we are already in a sub directory
     if [ ! -d download ]

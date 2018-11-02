@@ -18,15 +18,15 @@ http://festvox.org/cmu_wilderness/map.html
 
 # Language List
 
-The file LangList.txt has a list of all languages with features as space
-seperated fields
+The file LangList.txt has a list of all processed languages with
+features as space seperated fields
 
     1  LANGID six letter language id from bible.is
-    2  TLC    three letter language code (iso 639-2)
+    2  TLC    three letter language code (iso 639-3)
     3  WIKI   Wikipedia link to language description
     4  START  start url at bible.is
-    5  LAT    geo located latitude
-    6  LONG   geo located longitude
+    5  LAT    geolocated latitude
+    6  LONG   geolocated longitude
     7  #utt0  Number utterances found in Pass 0 (cross-lingual alignment)
     8  MCD0   Mel Cepstral Distortion score for Pass 0 (smaller is better)
     9  #utt1  Number utterances found in Pass 1 (in-language alignment)
@@ -34,7 +34,7 @@ seperated fields
     11 Dur    HH:MM:SS duration of alignment data (from Pass 1)
     12 MCDB   Mel Cepstral Distortion score for base CG synthesizer
     13 MCDR   Mel Cepstral Distortion score for Random Forest CG synthesizer
-    14- NAME  Text name of language (may be multiple fields)
+    14+ NAME  Text name of language (may be multiple fields)
     
 # Prerequisites
 
@@ -91,6 +91,11 @@ and Flite in NANTTV/voices/ This will take at least 48 hours on a 12
 core machine.
 
 # Create Speech To Text Model
+
+You can use the waveforms in NANTTV/aligned/wav/ and transcriptions in
+NANTTV/aligned/etc/trascription.txt.  The file NANTTV/aligned/etc/txt.done.data
+also has an alignment score (lower is better) for utterance.  If you want
+a pronunciation lexicon and transcription without punctuation you execute
 
     cd NANTTV
     nohup ../bin/do_found make_asr &
