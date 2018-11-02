@@ -1,8 +1,6 @@
 # datasets-CMU_Wilderness
 CMU Wilderness Multilingual Speech Dataset
 
-Under construction
-
 A dataset of over 700 different languages providing audio, aligned
 text and word pronunciations.  On average each language provides
 around 20 hours of sentence-lengthed transcriptions.  Data is mined
@@ -71,9 +69,9 @@ commands, but you should substitute the code for your desired language.
 This will unpack the indices in the NANTTV directory, download the
 data from bible.is (unless it is already in
 downloads/NANTTV/download/) then reconstruct the aligned data in
-NANTTV/aligned/wav and NANTTV/aligned/etc This process will take
+NANTTV/aligned/wav/ and NANTTV/aligned/etc/ This process will take
 around 30 minutes depending on your internet connection, and the
-speech of your machine.
+speed of your machine.
 
 ...
 
