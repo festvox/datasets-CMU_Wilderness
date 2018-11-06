@@ -978,7 +978,8 @@ then
    (cd v/is_do && rm -rf */tmpa.txt)
 
    (cd v ;
-       rm -rf test/all/*.mcep test/all/*.wav ;
+       rm -rf test/all/*.mcep;
+       rm -rf test/all/*.wav ;
        rm -rf ehmm/feat ehmm/bin/feat;
        rm -rf ccoefs/* ;
        rm -rf mcep_deltas/* ;
@@ -990,7 +991,8 @@ then
        rm -rf festival/dur/data/* )
 
    (cd v0 ;
-       rm -rf test/all/*.mcep test/all/*.wav ;
+       rm -rf test/all/*.mcep;
+       rm -rf test/all/*.wav ;
        rm -rf ehmm/feat ehmm/bin/feat;
        rm -rf ccoefs/* ;
        rm -rf mcep_deltas/* ;
@@ -1294,7 +1296,7 @@ then
     $this v_check
 
     # Reslice with first level target-language language model
-    # movec v/ to v0/ and starts again with better acoustic model
+    # movc v/ to v0/ and starts again with better acoustic model
     $this v_reinit_target_lang
     $this v_islice_para download/flist `v/bin/find_num_available_cpu`
     $this v_collect

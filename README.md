@@ -6,18 +6,18 @@ text and word pronunciations.  On average each language provides
 around 20 hours of sentence-lengthed transcriptions.  Data is mined
 from New Testaments from http://www.bible.is/
 
-List of Languages with realtive scores of accuracy of alignment
+List of Languages with relative scores of accuracy of alignment
 
 http://festvox.org/cmu_wilderness/
 
-Map of Languages geopistioned
+Map of Languages geopositioned
 
 http://festvox.org/cmu_wilderness/map.html
 
 # Language List
 
 The file LangList.txt has a list of all processed languages with
-features as space seperated fields
+features as space separated fields
 
     1  LANGID six letter language id from bible.is
     2  TLC    three letter language code (iso 639-3)
@@ -55,8 +55,8 @@ environment variable settings in festvox_env_settings
 # Create Alignments For A Language
 
 Because we cannot redistribution the audio from bible.is, you must
-download that diat directly, then build the alignments using the
-idices we distribute.
+download that data directly, then build the alignments using the
+indices we distribute.
 
 Alignments (short waveforms plus transcripts) may be recreated for
 a language from the packed versions in the indices/ directory.  You
@@ -104,20 +104,20 @@ lexicon in NANTTV/aligned/etc/pronunciation_lex
 
 # Creating New Alignments
 
-You can do the full allignment creation if you want.  Our alignments
+You can do the full alignment creation if you want.  Our alignments
 certainly can be improved on with better acoustic models,
 pronunciations etc.  If you are interested in re-aligning you can do so
-with the commant
+with the command
 
     nohup ./bin/do_found full_make_align http://listen.bible.is/NANTTV/Matt/1/D &
 
 This may take around 7 days on a 12 core machine.  It needs about 150GB of
-diskspace (which can be reduce with the command ../bin/do_found tidy_up at the
+diskspace (which can be reduced with the command ../bin/do_found tidy_up at the
 end to about 20GB).  The alignments themselves are usually 2GB.
 
 Aligning all 700 languages will take around 13 years on a single machine.
 
-# Acknowledgements
+# Acknowledgments
 
 This dataset was prepared by Alan W Black (awb@cs.cmu.edu) with substantial
 help from a large number of CMU students.  We also would like to thank
