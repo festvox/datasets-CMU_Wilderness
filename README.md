@@ -45,6 +45,11 @@ Note that the ffmpeg package is sometimes called avconv (you need
 to update bin/do_found accordingly if you only have avconv and not
 ffmpeg).
 
+# Clone the repository
+
+    git clone https://github.com/festvox/datasets-CMU_Wilderness
+    cd datasets-CMU_Wilderness
+
 # Make Dependencies
 
 Builds the FestVox voice building tools in build/ and sets up the

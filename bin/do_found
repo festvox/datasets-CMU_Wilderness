@@ -91,7 +91,7 @@ if [ "$ESTDIR" = "" ]
 then
     if [ -f festvox_env_settings ]
     then
-        source festvox_env_settings
+        . festvox_env_settings
     fi
 fi
 
