@@ -169,14 +169,8 @@ then
     exit $r
 fi
 
-# Always check dependencies and fail if they fail, and print the failure
-if ! $0 check_dependencies >/dev/null
-then
-    echo FAILED dependencies
-    $0 check_dependencies
-    exit 1
-fi
-
+## This has to be available before the actual check, so you can do this
+## to install the dependencies
 if [ "$1" = "make_dependencies" ]
 then
     if [ ! -d build ]
@@ -236,6 +230,14 @@ then
     echo export SPTKDIR=$SPTKDIR >>../festvox_env_settings
 
     exit
+fi
+
+# Always check dependencies and fail if they fail, and print the failure
+if ! $0 check_dependencies >/dev/null
+then
+    echo FAILED dependencies
+    $0 check_dependencies
+    exit 1
 fi
 
 if [ "$1" = "do_all" ]
