@@ -78,8 +78,6 @@ NANTTV/aligned/wav/ and NANTTV/aligned/etc/ This process will take
 around 30 minutes depending on your internet connection, and the
 speed of your machine.
 
-...
-
 # Create Text To Speech Model
 
 Given the alignments in aligned/ you can build a speech synthesizer

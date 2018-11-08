@@ -89,9 +89,14 @@ FFMPEG=ffmpeg
 # Set the FestVox environment variables
 if [ "$ESTDIR" = "" ]
 then
-    if [ -f festvox_env_settings ]
+    if [ -f ./festvox_env_settings ]
     then
-        . festvox_env_settings
+        . ./festvox_env_settings
+    else
+        if [ -f ../festvox_env_settings ]
+        then
+            . ../festvox_env_settings
+        fi
     fi
 fi
 
