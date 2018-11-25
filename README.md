@@ -4,7 +4,7 @@ CMU Wilderness Multilingual Speech Dataset
 A dataset of over 700 different languages providing audio, aligned
 text and word pronunciations.  On average each language provides
 around 20 hours of sentence-lengthed transcriptions.  Data is mined
-from New Testaments from http://www.bible.is/
+from read New Testaments from http://www.bible.is/
 
 List of Languages with relative scores of accuracy of alignment
 
@@ -59,13 +59,13 @@ environment variable settings in festvox_env_settings
 
 # Create Alignments For A Language
 
-Because we cannot redistribution the audio from bible.is, you must
+Because we cannot redistribute the audio from bible.is, you must
 download that data directly, then build the alignments using the
 indices we distribute.
 
 Alignments (short waveforms plus transcripts) may be recreated for
 a language from the packed versions in the indices/ directory.  You
-need to know the six letter code for the languages (see LangList for
+need to know the six letter code for the language (see LangList for
 mappings).  In this example we use NANTTV (Hokkien) to illustrate the
 commands, but you should substitute the code for your desired language.
 
@@ -116,7 +116,7 @@ with the command
 
 This may take around 7 days on a 12 core machine.  It needs about 150GB of
 diskspace (which can be reduced with the command ../bin/do_found tidy_up at the
-end to about 20GB).  The alignments themselves are usually 2GB.
+end to about 20GB).  The alignments themselves are usually around 2GB.
 
 Aligning all 700 languages will take around 13 years on a single machine.
 
