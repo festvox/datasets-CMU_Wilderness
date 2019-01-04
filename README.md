@@ -38,7 +38,7 @@ features as space separated fields
 
 Ubuntu (and related) prerequisites:
 
-    sudo apt-get install git build-essential libncurses5-dev sox
+    sudo apt-get install git build-essential libncurses5-dev sox wget
     sudo apt-get install csh ffmpeg html2text
 
 Note that the ffmpeg package is sometimes called avconv (you need
@@ -87,7 +87,7 @@ for Festival (and Flite) as follows.
     nohup ../bin/do_found make_tts &
     ../bin/do_found get_voices
 
-While build a Random Forest Clustergen synthesis model for Festival
+Will build a Random Forest Clustergen synthesis model for Festival
 and Flite in NANTTV/voices/ This will take at least 48 hours on a 12
 core machine.
 

@@ -1,12 +1,20 @@
+ABIWBT abi https://en.wikipedia.org/wiki/Abidji_language http://listen.bible.is/ABIWBT/Matt/1/N 5.65656 -4.58421 4482 7.75 10538 6.27 16:18:58 5.09 4.94 Abidji 
 AC1IBS ace https://en.wikipedia.org/wiki/Acehnese_language http://listen.bible.is/AC1IBS/Matt/1 3.90757 96.6032 6674 7.71 12881 6.51 23:46:27 5.42 5.31 Aceh 
+ACCIBS acr https://en.wikipedia.org/wiki/Achi_language http://listen.bible.is/ACCIBS/Matt/1/N 15.073 -90.3513 11121 7.07 15777 6.15 18:04:57 5.15 4.94 Achi de Cubulco 
 ACDWBT acd https://en.wikipedia.org/wiki/Kyode_language http://listen.bible.is/ACDWBT/Matt/1 8.39478 0.56975 1901 8.16 14091 7.73 27:39:10 5.99 5.78 Gikyode 
 ACHBSU ach https://en.wikipedia.org/wiki/Acoli_dialect http://listen.bible.is/ACHBSU/Matt/1/D 3.57738 32.5147 7128 7.35 8287 6.80 14:40:52 5.73 5.60 Acholi 
 ACMAS3 acm https://en.wikipedia.org/wiki/Arabic http://listen.bible.is/ACMAS3/Matt/1/D 33.8178 43.1095 671 8.38 1373 8.29 03:48:00 8.38 8.08 العربية 
 ACNBSM acn https://en.wikipedia.org/wiki/Achang_language http://listen.bible.is/ACNBSM/Matt/1/D 24.3479 97.7438 8645 6.91 12382 6.14 24:17:44 5.38 5.27 Ngochang 
+ACRWB1 quc https://en.wikipedia.org/wiki/K%27iche%27_language http://listen.bible.is/ACRWB1/Matt/1/D 14.5278 -91.1696 9593 7.82 16029 6.56 23:02:50 5.46 5.31 Achí 
+ACRWBT quc https://en.wikipedia.org/wiki/K%27iche%27_language http://listen.bible.is/ACRWBT/Matt/1/D 14.5278 -91.1696 9670 7.96 12005 7.62 21:28:24 5.79 5.65 Achí 
 ACUTBL acu https://en.wikipedia.org/wiki/Shiwiar_language http://listen.bible.is/ACUTBL/Matt/1/D -2.82646 -77.2641 18494 6.32 21189 6.24 32:42:58 4.44 4.34 Achuar-Shiwiar 
-ADETBL ade https://mail.google.com/mail/u/1/#inbox http://listen.bible.is/ADETBL/Matt/1/D 8.16975 0.619185 2470 7.86 10633 6.88 22:41:41 6.08 5.86 Adele 
+ADETBL ade https://en.wikipedia.org/wiki/Adele_language http://listen.bible.is/ADETBL/Matt/1/D 8.16975 0.619185 2470 7.86 10633 6.88 22:41:41 6.08 5.86 Adele 
+ADHBSU adh https://en.wikipedia.org/wiki/Adhola_dialect http://listen.bible.is/ADHBSU/Matt/1/D 0.73235 34.0341 7815 7.32 11378 6.52 19:38:51 5.59 5.37 Dhopadhola 
 ADJWBT adj https://en.wikipedia.org/wiki/Adjukru_language http://listen.bible.is/ADJWBT/Matt/1/D 5.38228 -4.52522 2505 8.59 4273 7.42 06:43:23 6.69 6.41 Adioukrou 
+AEUWBT aeu https://en.wikipedia.org/wiki/Akeu_language http://listen.bible.is/AEUWBT/Matt/1/N 22 100 6711 7.39 10600 6.94 23:29:49 4.32 4.22 Akeu 
 AGNWPS agn https://en.wikipedia.org/wiki/Agutaynen_language http://listen.bible.is/AGNWPS/Matt/1/D 10.5328 119.655 11718 7.09 14433 6.08 24:30:40 4.94 4.83 Agutaynen 
+AGRTBL agr https://en.wikipedia.org/wiki/Aguaruna_language http://listen.bible.is/AGRTBL/Matt/1/D -5.30044 -77.9218 12266 6.81 14331 6.43 26:12:32 5.35 5.24 Awajun 
+AGUNVS agu https://en.wikipedia.org/wiki/Awakatek_language http://listen.bible.is/AGUNVS/Matt/1/N 15.3307 -91.3153 16911 6.40 18461 5.81 22:32:02 4.78 4.64 Aguacateco 
 AHKTBS ahk https://en.wikipedia.org/wiki/Akha_language http://listen.bible.is/AHKTBS/Matt/1/D 21.2309 100.964 2389 7.49 10973 6.98 21:42:30 5.53 5.39 Akha 
 AIAWYI aia https://en.wikipedia.org/wiki/Arosi_language http://listen.bible.is/AIAWYI/Matt/1/D -10.2441 161.432 11276 6.69 13896 5.59 23:35:33 4.53 4.44 Arosi 
 AK1BSG aka https://en.wikipedia.org/wiki/Akan_language http://listen.bible.is/AK1BSG/Matt/1/D 6.34756 -1.33254 7628 8.00 8364 7.81 14:30:19 5.54 5.38 Akan: Akuapem 
@@ -22,6 +30,7 @@ AMKWBT amk https://en.wikipedia.org/wiki/Ambai_language http://listen.bible.is/A
 ANNWBT ann https://en.wikipedia.org/wiki/Obolo_language http://listen.bible.is/ANNWBT/Matt/1/D 4.62851 7.81985 4593 8.40 3555 8.47 09:22:14 7.80 7.49 Obolo 
 ANVWBT anv https://en.wikipedia.org/wiki/Denya_language http://listen.bible.is/ANVWBT/Matt/1/D 5.97237 9.39989 1380 7.70 6813 6.66 14:19:13 6.08 5.84 Denya 
 APDAS2 apd https://en.wikipedia.org/wiki/Sudanese_Arabic http://listen.bible.is/APDAS2/Matt/1/D 17.8021 33.3179 623 7.79 2475 8.03 06:18:51 7.69 7.36 العربية 
+APRWBT apr https://en.wikipedia.org/wiki/Arop-Lokep_language http://listen.bible.is/APRWBT/Matt/1/N -5.31671 147.103 13084 6.13 14944 6.21 30:52:28 4.52 4.41 Arop-Lokep 
 ARBIBS arb https://en.wikipedia.org/wiki/Modern_Standard_Arabic http://listen.bible.is/ARBIBS/Matt/1/D 27.9625 43.8525 520 8.44 2225 7.91 06:00:54 7.76 7.45 العربية 
 ARZVDV arz https://en.wikipedia.org/wiki/Egyptian_Arabic http://listen.bible.is/ARZVDV/Matt/1/D 31.0 31.0 644 8.14 7217 7.36 16:25:54 6.32 6.14 العربية 
 ATGWYI atg https://en.wikipedia.org/wiki/Okpela_language http://listen.bible.is/ATGWYI/Matt/1/D 7.15307 6.21209 4006 8.25 8144 7.66 16:29:48 5.55 5.39 Okphela 
@@ -47,9 +56,11 @@ BCWWBT bcw https://en.wikipedia.org/wiki/Bana_language http://listen.bible.is/BC
 BEHWBT beh https://en.wikipedia.org/wiki/Berba_language http://listen.bible.is/BEHWBT/Matt/1/D 11.0382 1.08259 6072 8.03 9338 7.60 14:38:16 5.94 5.67 Biali 
 BEPLAI bep https://en.wikipedia.org/wiki/Badaic_language http://listen.bible.is/BEPLAI/Matt/1/D -1.60095 120.379 10907 6.76 11848 6.36 22:11:26 5.04 4.92 Behoa 
 BEXWBT bex https://en.wikipedia.org/wiki/Jur_Modo_language http://listen.bible.is/BEXWBT/Matt/1/D 6.03321 29.974 2873 7.33 8662 6.74 16:38:14 5.70 5.46 Jur Modo 
+BFABSS bfa https://en.wikipedia.org/wiki/Bari_language http://listen.bible.is/BFABSS/Matt/1/N 4.19522 31.0723 8899 5.50 11334 5.20 22:27:17 4.56 4.46 Bari 
 BFDWBT bfd https://en.wikipedia.org/wiki/Fut_language http://listen.bible.is/BFDWBT/Matt/1/D 6.14153 10.1194 624 7.72 7435 7.34 17:49:18 6.12 5.95 Bafut 
 BFOBSB bfo https://en.wikipedia.org/wiki/Birifor_language http://listen.bible.is/BFOBSB/Matt/1/D 9.78465 -2.90623 3073 8.11 8891 6.48 15:07:02 5.60 5.38 Birifor, Northern 
 BGRBBS bgr https://en.wikipedia.org/wiki/Bawm_language http://listen.bible.is/BGRBBS/Matt/1/D 22.4405233333 92.92553 9792 7.30 10870 6.79 20:46:49 5.71 5.57 Bawm 
+BHZLAI bhz https://en.wikipedia.org/wiki/Badaic_language http://listen.bible.is/BHZLAI/Matt/1/N -1.80249 120.319 10848 6.26 13033 5.38 21:52:11 4.46 4.37 Bada 
 BIBWBT bib https://en.wikipedia.org/wiki/Bissa_language http://listen.bible.is/BIBWBT/Matt/1/D 10.4257 -1.67332 1465 9.04 6247 7.70 09:38:14 6.55 6.22 Bissa 
 BIMWBT bim https://en.wikipedia.org/wiki/Moba_language http://listen.bible.is/BIMWBT/Matt/1/D 10.4575 0.06121 5557 7.98 9576 7.01 16:31:29 5.99 5.80 Bimoba 
 BISBSP bis https://en.wikipedia.org/wiki/Bislama http://listen.bible.is/BISBSP/Matt/1/D -15.4 166.89 12026 7.34 12458 6.67 26:29:20 5.58 5.38 Bislama 
@@ -73,11 +84,21 @@ BQPSIM bqp https://en.wikipedia.org/wiki/Busa_language_(Mande) http://listen.bib
 BRUNXB bru https://en.wikipedia.org/wiki/Bru_language http://listen.bible.is/BRUNXB/Matt/1/D 17.1311 105.671 4682 7.57 17964 6.34 25:17:49 5.28 4.99 Bru Eastern 
 BSSWBT bss https://en.wikipedia.org/wiki/Manenguba_language http://listen.bible.is/BSSWBT/Matt/1/D 4.9243 9.65522 993 8.48 8366 7.24 13:50:56 5.98 5.78 Akoose 
 BTDLAI btd https://en.wikipedia.org/wiki/Batak_Dairi_language http://listen.bible.is/BTDLAI/Matt/1/D 2.51438 98.2427 7175 7.41 10744 6.11 17:15:49 5.17 5.01 Bahasa Pakpak Dairi 
+BTSLAI bts https://en.wikipedia.org/wiki/Batak_Simalungun_language http://listen.bible.is/BTSLAI/Matt/1/D 3.04372 98.9083 11003 6.99 12407 6.41 22:59:18 5.60 5.42 Batak Simalungun 
+BTTPDT btt https://en.wikipedia.org/wiki/Bete-Bendi_language http://listen.bible.is/BTTPDT/Matt/1/D 6.62037 9.20189 10200 9.30 10783 9.10 20:01:47 7.26 6.94 Bete-Bendi 
 BTXLAI btx https://en.wikipedia.org/wiki/Batak_Karo_language http://listen.bible.is/BTXLAI/Matt/1/D 2.12787 98.2517 12568 6.22 13545 6.17 22:01:33 5.24 5.09 Batak Karo 
 BUDIBS bud https://en.wikipedia.org/wiki/Ntcham_language http://listen.bible.is/BUDIBS/Matt/1/D 9.23971 0.599275 1178 9.02 4044 8.79 08:26:50 7.65 7.27 Bassar Ntcham 
+BUSSIM bus https://en.wikipedia.org/wiki/Busa_language_(Mande) http://listen.bible.is/BUSSIM/Matt/1/D 9.52724 3.80058 3639 7.82 10506 6.87 14:13:44 5.47 5.20 Bokobaru 
+BWQBSB bwq https://en.wikipedia.org/wiki/Bobo_language http://listen.bible.is/BWQBSB/Matt/1/D 11.5409 -4.26497 2488 8.21 9744 7.62 15:18:05 6.60 6.29 Bobo Madare, Southern 
+BWUTBL bwu https://en.wikipedia.org/wiki/Buli_language_(Ghana) http://listen.bible.is/BWUTBL/Matt/1/D 10.5763 -1.26748 9307 7.48 11769 7.31 24:56:07 6.11 5.86 Buli 
 BZHPNG bzh https://en.wikipedia.org/wiki/Mapos_Buang_language http://listen.bible.is/BZHPNG/Matt/1/D -6.86672 146.774 7775 6.50 13537 5.76 23:48:20 4.88 4.77 Buang, Central 
 BZJBSW bzj https://en.wikipedia.org/wiki/Belizean_Creole http://listen.bible.is/BZJBSW/Matt/1/D 17.3941 -88.6281 9575 7.51 11234 6.75 17:44:34 5.88 5.76 Belize Kriol 
 CA1WBT cak https://en.wikipedia.org/wiki/Kaqchikel_language http://listen.bible.is/CA1WBT/Matt/1/D 14.4662 -90.9881 9281 6.67 13630 6.14 27:50:24 5.14 5.07 Cakchiquel, South Central 
+CAAWBT caa https://en.wikipedia.org/wiki/Ch%E2%80%99orti%E2%80%99_language http://listen.bible.is/CAAWBT/Matt/1/D 14.818 -89.2363 9052 6.68 12675 6.42 31:51:53 5.04 4.95 Chorti 
+CABNVS cab https://en.wikipedia.org/wiki/Garifuna_language http://listen.bible.is/CABNVS/Matt/1/D 15.3529 -86.9091 6274 7.37 7769 7.14 15:00:23 6.20 6.01 Garifuna 
+CACSBG cac https://en.wikipedia.org/wiki/Chuj_language http://listen.bible.is/CACSBG/Matt/1/D 15.8399 -91.76 15309 7.64 15220 7.46 24:16:28 5.72 5.53 Chuj, San Sebastian 
+CAKSBG cak https://en.wikipedia.org/wiki/Kaqchikel_language http://listen.bible.is/CAKSBG/Matt/1/D 14.4662 -90.9881 6660 6.96 14210 nan 23:10:01 7.07 6.87 Cakchiquel, Central 
+CAPSBB cap https://en.wikipedia.org/wiki/Chipaya_language http://listen.bible.is/CAPSBB/Matt/1/D -18.73951 -67.89633 3893 7.11 11111 6.55 22:05:33 5.60 5.46 Chipaya 
 CARBSS car https://en.wikipedia.org/wiki/Carib_language http://listen.bible.is/CARBSS/Matt/1/D 5.83772 -56.8323 16578 7.52 15369 7.30 23:59:01 5.59 5.41 Carib 
 CAXSBB cax https://en.wikipedia.org/wiki/Chiquitano_language http://listen.bible.is/CAXSBB/Matt/1/D -17.6354 -59.9172 5360 7.64 7678 7.34 15:31:43 6.15 5.98 Chiquitano 
 CBSBSP cbs https://en.wikipedia.org/wiki/Kashinawa_language http://listen.bible.is/CBSBSP/Matt/1/D -9.72027 -71.1733 11501 6.69 14158 6.40 33:44:38 5.43 5.25 Junikuin 
@@ -86,23 +107,35 @@ CBVTBL cbv https://en.wikipedia.org/wiki/Kakwa_language http://listen.bible.is/C
 CCESBM cce https://en.wikipedia.org/wiki/Chopi_language http://listen.bible.is/CCESBM/Matt/1/D -24.8327 34.1097 11196 6.62 12202 6.28 23:36:48 5.45 5.33 Txitxopi 
 CEBRPV ceb https://en.wikipedia.org/wiki/Cebuano_language http://listen.bible.is/CEBRPV/Matt/1/D 8.38799 124.367 10332 7.46 11975 6.91 21:50:07 6.00 5.83 Cebuano 
 CEGNTP ceg https://en.wikipedia.org/wiki/Chamacoco_language http://listen.bible.is/CEGNTP/Matt/1 -20.5899 -58.2005 6851 7.80 15943 6.53 22:26:44 5.47 5.34 Chamacoco 
+CGCTBL cgc https://en.wikipedia.org/wiki/Kagayanen_language http://listen.bible.is/CGCTBL/Matt/1/D 10.4656 119.872 9660 6.94 13186 6.15 24:36:00 5.36 5.24 Kagayanen 
 CHEIBT che https://en.wikipedia.org/wiki/Chechen_language http://listen.bible.is/CHEIBT/Matt/1/D 43.5 45.5 459 7.46 2527 7.08 04:46:25 6.88 6.65 Chechen 
 CHVIBT chv https://en.wikipedia.org/wiki/Chuvash_language http://listen.bible.is/CHVIBT/Matt/1/D 55.487 47.163 2119 7.45 578 7.30 01:03:03 7.00 6.79 Chuvash 
 CHZWBT chz https://en.wikipedia.org/wiki/Chinantecan_languages http://listen.bible.is/CHZWBT/Matt/1/D 17.6976 -96.2249 640 8.02 3768 7.67 06:29:43 7.11 6.82 Chinantec de Ozumacin 
 CJPTJV cjp https://en.wikipedia.org/wiki/Cab%C3%A9car_language http://listen.bible.is/CJPTJV/Matt/1/D 9.67031 -83.4102 4676 7.41 11428 6.18 16:24:32 5.23 5.12 Cabecar 
+CK1WBT cak https://en.wikipedia.org/wiki/Kaqchikel_language http://listen.bible.is/CK1WBT/Matt/1/N 14.4662 -90.9881 10334 6.35 13876 5.48 26:40:16 4.93 4.82 Cakchiquel Santo Domingo Xenacoj 
 CKIWBT cak https://en.wikipedia.org/wiki/Kaqchikel_language http://listen.bible.is/CKIWBT/Matt/1/D 14.4662 -90.9881 6767 7.32 13796 6.80 22:49:38 5.19 5.09 Cakchiquel, Santa Maria de Jesus 
 CKOGIL cko https://en.wikipedia.org/wiki/Chakosi_language http://listen.bible.is/CKOGIL/Matt/1/D 10.2839 0.56021 4321 7.90 8969 6.93 18:02:31 6.21 5.95 Anufo 
 CKWNVS cak https://en.wikipedia.org/wiki/Kaqchikel_language http://listen.bible.is/CKWNVS/Matt/1/D 14.4662 -90.9881 4816 7.93 6771 7.93 18:33:00 6.81 6.65 Cakchiquel, Western 
+CMEWBT cme https://en.wikipedia.org/wiki/Cerma_language http://listen.bible.is/CMEWBT/Matt/1/D 10.1245 -4.94917 5148 8.23 8869 8.46 16:32:35 7.73 7.35 Cerma 
+CMOWBT cmo https://en.wikipedia.org/wiki/Mnong_language http://listen.bible.is/CMOWBT/Matt/1/N 12.6313 107.301 2552 6.97 8358 6.04 16:21:40 4.44 4.34 Bunong 
 CMRWBT cmr https://en.wikipedia.org/wiki/Mro_language http://listen.bible.is/CMRWBT/Matt/1/D 19.71 93.995 5388 8.31 12993 7.35 23:23:02 5.55 5.38 Chin, Mro-Khimi 
+CNHBSM cme https://en.wikipedia.org/wiki/Hakha_Chin_language http://listen.bible.is/CNHBSM/Matt/1/D 10.1245 -4.94917 10721 6.55 12285 6.06 21:45:58 5.30 5.12 Chin, Haka 
+CNIWBT cni https://en.wikipedia.org/wiki/Ash%C3%A1ninka_language http://listen.bible.is/CNIWBT/Matt/1/D -11.9311 -73.9073 16429 7.43 13782 7.76 23:23:04 6.83 6.51 Ashaninca 
 CNLTBL cnl https://en.wikipedia.org/wiki/Lalana-Tepinapa_Chinantec http://listen.bible.is/CNLTBL/Matt/1/D 17.58251 -96.00645 2419 8.05 11633 7.44 14:19:30 5.90 5.68 Chinanteco de San Juan Lalana 
 CNMRGB cac https://en.wikipedia.org/wiki/Chuj_language http://listen.bible.is/CNMRGB/Matt/1/D 15.8399 -91.76 7479 7.22 16210 6.74 21:58:17 5.07 5.00 Chuj, San Mateo Ixtatan 
+CNTTBL cnt https://en.wikipedia.org/wiki/Chinantec_of_Tepetotutla http://listen.bible.is/CNTTBL/Matt/1/D 17.7115 -96.5404 676 7.98 3399 7.35 05:17:04 6.90 6.65 Chinanteco de Tepetotutla 
+COEWBT coe https://en.wikipedia.org/wiki/Koreguaje_language http://listen.bible.is/COEWBT/Matt/1/D 0.92316 -75.3475 5754 7.14 9910 6.61 15:50:58 5.51 5.35 Koreguaje 
 COKWBT cok https://en.wikipedia.org/wiki/Cora_language http://listen.bible.is/COKWBT/Matt/1/D 22.7102 -104.7 5397 5.32 11483 5.37 29:25:55 4.62 4.51 Cora, Santa Teresa 
+CONWBT con https://en.wikipedia.org/wiki/Cof%C3%A1n_language http://listen.bible.is/CONWBT/Matt/1/D 0.276675 -77.0643 14668 7.17 15811 6.82 22:39:24 5.32 5.22 Cofan 
 CRHIBT crh https://en.wikipedia.org/wiki/Crimean_Tatar_language http://listen.bible.is/CRHIBT/Matt/1/D 45.0 34.08 1177 6.30 10701 5.36 20:06:07 4.74 4.64 Crimean Tatar 
 CRNWBT crn https://en.wikipedia.org/wiki/Cora_language http://listen.bible.is/CRNWBT/Matt/1/D 22.4099 -104.467 4160 7.64 11106 6.92 21:03:54 5.54 5.43 Cora, El Nayar 
+CSKATB csk https://en.wikipedia.org/wiki/Kasa_language http://listen.bible.is/CSKATB/Matt/1/D 12.5089 -16.5539 10433 8.19 8385 7.48 16:03:29 6.00 5.79 Jola Kasa 
+CSOTBL cso https://en.wikipedia.org/wiki/Sochiapam_Chinantec http://listen.bible.is/CSOTBL/Matt/1/D 17.7985 -96.6079 1112 7.30 6085 6.10 10:23:10 5.07 4.90 Chinanteco de Sochiapan 
 CT1TEV ctd https://en.wikipedia.org/wiki/Tedim_language http://listen.bible.is/CT1TEV/Matt/1/D 23.6079 93.519 8358 6.93 9712 6.61 22:13:23 5.53 5.37 Chin, Tiddim 
 CTUBSM ctu https://en.wikipedia.org/wiki/Ch%E2%80%99ol_language http://listen.bible.is/CTUBSM/Matt/1/D 17.4897 -92.4698 5833 7.46 11063 7.05 13:20:04 5.28 5.09 Chol Tumbala 
 CUCTBL cuc https://en.wikipedia.org/wiki/Usila_Chinantec http://listen.bible.is/CUCTBL/Matt/1/D 17.9184 -96.4074 964 7.57 4299 6.65 07:50:16 5.85 5.72 Chinanteco de Usila 
 CUIWBT cui https://en.wikipedia.org/wiki/Cuiba_language http://listen.bible.is/CUIWBT/Matt/1/D 6.19829 -69.8197 14749 7.39 12557 7.31 26:49:44 5.54 5.33 Cuiba 
+CUKNVS cuk https://en.wikipedia.org/wiki/Kuna_language http://listen.bible.is/CUKNVS/Matt/1/D 9.15686 -78.3075 10009 6.23 14518 6.06 25:53:31 4.83 4.71 Kuna San Blas 
 CWEPBT cwe https://en.wikipedia.org/wiki/Kwere_language http://listen.bible.is/CWEPBT/Matt/1/D -6.50666 38.4449 7291 8.25 8581 7.51 16:53:34 5.14 5.04 Kwere 
 CWTATB cwt https://en.wikipedia.org/wiki/Kwatay_language http://listen.bible.is/CWTATB/Matt/1/D 12.48255 -16.74835 10196 7.85 12633 7.40 19:15:36 5.94 5.66 Kwatay 
 DA1EST dni https://en.wikipedia.org/wiki/Dan_language http://listen.bible.is/DA1EST/Matt/1/D -4.25684 138.992 606 8.02 4687 6.93 11:07:12 6.04 5.77 Dan, East 
@@ -126,17 +159,21 @@ DYUWYI dyu https://en.wikipedia.org/wiki/Dyula_language http://listen.bible.is/D
 EMPWYI emp https://en.wikipedia.org/wiki/Embera_language http://listen.bible.is/EMPWYI/Matt/1/D 7.12761 -77.574 2071 8.06 7647 7.30 13:57:29 6.29 6.09 Embera, Northern 
 EN1NIV eng https://en.wikipedia.org/wiki/English_language http://listen.bible.is/EN1NIV/Matt/1/D 53.0 -1.0 10391 6.73 10251 6.94 13:41:58 5.83 5.65 English 
 ENBBTL enb https://en.wikipedia.org/wiki/Markweta_language http://listen.bible.is/ENBBTL/Matt/1/D 1.15018 35.5866 5039 8.11 9216 7.31 15:28:00 6.14 5.94 Marakwet 
-ENXBSP enx https://en.wikipedia.org/wiki/Enxet_language http://listen.bible.is/ENXBSP/Matt/1/D -23 -58 6785 6.69 10943 5.99 22:09:42 4.99 4.90 Enxet 
+ENXBSP enx https://en.wikipedia.org/wiki/Enxet_language http://listen.bible.is/ENXBSP/Matt/1/D unknown unknown 6785 6.69 10943 5.99 22:09:42 4.99 4.90 Enxet 
 ERVWTC kan https://en.wikipedia.org/wiki/Kannada http://listen.bible.is/ERVWTC/Matt/1/N 13.5878 76.1198 4155 6.77 7499 6.61 22:48:19 5.70 5.58 ಕನ್ನಡ 
 ESENTM ese https://en.wikipedia.org/wiki/Ese_Ejja_language http://listen.bible.is/ESENTM/Matt/1/D -11.7268 -67.515 10220 6.81 22035 6.54 42:22:22 5.08 4.98 Ese Ejja 
+ESSWYI ess https://en.wikipedia.org/wiki/Siberian_Yupik http://listen.bible.is/ESSWYI/Matt/1/D 63.4308 -170.272 7037 5.83 11108 5.79 21:26:12 4.68 4.58 St. Lawrence Island Yupik 
 EUSEAB eus https://en.wikipedia.org/wiki/Basque_language http://listen.bible.is/EUSEAB/Matt/1/D 43.2787 -1.31622 11949 6.52 12739 6.15 18:24:52 5.11 5.00 Euskara 
+EWEBSG ewe https://en.wikipedia.org/wiki/Ewe_language http://listen.bible.is/EWEBSG/Matt/1/N 6.46061 0.814975 8008 7.10 11887 6.32 18:06:10 5.38 5.26 Ewe 
 EWEIBS ewe https://en.wikipedia.org/wiki/Ewe_language http://listen.bible.is/EWEIBS/Matt/1/D 6.46061 0.814975 3480 7.52 9173 6.72 19:42:06 5.82 5.64 Ewe 
 FALTBL fal https://en.wikipedia.org/wiki/Fali_languages_(Cameroon) http://listen.bible.is/FALTBL/Matt/1/D 9.51408 13.6164 7574 8.05 10699 7.70 16:23:48 5.59 5.40 Fali, South 
 FARWBT far https://en.wikipedia.org/wiki/Fataleka_language http://listen.bible.is/FARWBT/Matt/1/D -8.59041 160.861 12970 5.99 13376 6.29 31:07:17 4.93 4.81 Fataleka 
 FIJBSP fij https://en.wikipedia.org/wiki/Fijian_language http://listen.bible.is/FIJBSP/Matt/1/D -18.0 178.33 7938 7.75 7248 7.57 17:34:41 6.74 6.52 Fijian 
+FIN38V fin https://en.wikipedia.org/wiki/Finnish_language http://listen.bible.is/FIN38V/Matt/1/N 64.7628 25.5577 9221 6.16 12191 5.21 17:41:40 4.78 4.72 Suomi 
 FIZTBL izr https://en.wikipedia.org/wiki/Izere_language http://listen.bible.is/FIZTBL/Matt/1/D 9.5 8.7 7942 7.48 9498 6.71 18:19:00 6.00 5.74 Izere 
 FLMUBS cfm https://en.wikipedia.org/wiki/Falam_language http://listen.bible.is/FLMUBS/Matt/1/D 23.7892833333 92.3254633333 11834 7.29 14152 6.69 22:19:30 5.53 5.36 Chin, Falam 
 FONBSB fon https://en.wikipedia.org/wiki/Fon_language http://listen.bible.is/FONBSB/Matt/1/D 7.15484 1.66495 2605 8.73 12448 0.00 17:10:36 5.73 5.58 Fon (Fongbe) 
+FRDWBT frd https://en.wikipedia.org/wiki/Fordata_language http://listen.bible.is/FRDWBT/Matt/1/N -7.28902 131.511 13916 5.37 14430 5.31 27:55:36 4.52 4.39 Fordata 
 FRNPDC fra https://en.wikipedia.org/wiki/French_language http://listen.bible.is/FRNPDC/Matt/1/D 48.0 2.0 10819 8.03 5628 8.19 11:55:32 7.40 7.12 Français 
 FRNPDV fra https://en.wikipedia.org/wiki/French_language http://listen.bible.is/FRNPDV/Matt/1/D 48.0 2.0 7601 8.53 8028 0.00 14:47:39 8.22 7.76 Français 
 FUFPBT fuf https://en.wikipedia.org/wiki/Pular_language http://listen.bible.is/FUFPBT/Matt/1/D 12.1826 -12.7338 5032 8.13 8988 7.61 16:26:57 5.64 5.47 Pular 
@@ -156,7 +193,7 @@ GOFTBL gof https://en.wikipedia.org/wiki/Gamo-Gofa-Dawro_language http://listen.
 GOGBST gog https://en.wikipedia.org/wiki/Gogo_language http://listen.bible.is/GOGBST/Matt/1/D -6.35951 35.4807 7382 7.66 9774 6.97 21:29:54 5.88 5.74 Chigogo 
 GORLAI gor https://en.wikipedia.org/wiki/Gorontalo_language http://listen.bible.is/GORLAI/Matt/1/D 0.62689 122.288 10254 6.64 12172 6.15 26:36:34 5.25 5.12 Gorontalo 
 GQRWBT gqr https://en.wikipedia.org/wiki/Doba_language http://listen.bible.is/GQRWBT/Matt/1/D 8.0841 17.0713 2522 7.60 11194 6.51 19:53:01 5.52 5.36 Gor 
-GSOCAR gso none http://listen.bible.is/GSOCAR/Matt/1/D 4.70037 14.9569 3962 8.38 10349 7.61 15:50:10 5.71 5.55 Gbaya, Southwest 
+GSOCAR gso https://en.wikipedia.org/wiki/Biyanda-Buli_language http://listen.bible.is/GSOCAR/Matt/1/D 4.70037 14.9569 3962 8.38 10349 7.61 15:50:10 5.71 5.55 Gbaya, Southwest 
 GU1WBT gur https://en.wikipedia.org/wiki/Frafra_language http://listen.bible.is/GU1WBT/Matt/1/D 11.0918 -0.81109 1915 8.91 7286 8.12 13:40:00 6.83 6.52 Ninkare 
 GUBWBT gub https://en.wikipedia.org/wiki/Tenetehara_language http://listen.bible.is/GUBWBT/Matt/1/D -4.69461 -45.7081 27164 7.03 29941 6.41 40:22:59 5.19 5.08 Guajajára 
 GUDBSC gud https://en.wikipedia.org/wiki/Dida_language http://listen.bible.is/GUDBSC/Matt/1/D 5.40126 -5.12242 3492 8.04 9214 6.95 15:47:06 5.33 5.16 Dida, Yocoboué 
@@ -222,6 +259,7 @@ JIVAIE jiv https://en.wikipedia.org/wiki/Shuar_language http://listen.bible.is/J
 JMCBST jmc https://en.wikipedia.org/wiki/West_Kilimanjaro_language http://listen.bible.is/JMCBST/Matt/1/D -3.29385 37.0703 9811 6.92 11135 6.76 21:35:06 5.77 5.57 Kimashami 
 JUNWIN jun https://en.wikipedia.org/wiki/Juang_language http://listen.bible.is/JUNWIN/Matt/1/D 21.2606 85.5845 4667 7.47 5781 6.95 20:38:31 6.52 6.20 Juang 
 JVNTBL jvn https://en.wikipedia.org/wiki/Javanese_language http://listen.bible.is/JVNTBL/Matt/1/D 5.62695 -54.6305 4178 7.81 9322 6.85 15:33:38 5.77 5.60 Javanese, Caribbean 
+KAAIBT kaa https://en.wikipedia.org/wiki/Karakalpak_language http://listen.bible.is/KAAIBT/Matt/1/D 39.98 63.3223 6687 7.43 8085 6.66 15:23:05 5.63 5.43 Karakalpak 
 KABCEB kab https://en.wikipedia.org/wiki/Kabyle_language http://listen.bible.is/KABCEB/Matt/1/D 36.4103 4.76137 3703 7.62 4426 7.44 07:45:11 7.01 6.83 Kabyle 
 KACUBS kac https://en.wikipedia.org/wiki/Jingpho_language http://listen.bible.is/KACUBS/Matt/1/D 25.4634 97.3278 9601 7.09 11868 6.35 24:37:01 5.56 5.42 Kachin 
 KAOABM kao https://en.wikipedia.org/wiki/Kassonke_language http://listen.bible.is/KAOABM/Matt/1/D 14.2147 -13.8051 9479 8.58 4768 8.47 09:38:51 7.93 7.55 Khassonke 
@@ -239,7 +277,7 @@ KEKSBG kek https://en.wikipedia.org/wiki/Q%27eqchi%27_language http://listen.bib
 KENWBT ken https://en.wikipedia.org/wiki/Kenyang_language http://listen.bible.is/KENWBT/Matt/1/D 5.58288 9.55918 1610 7.82 5597 7.44 10:05:04 6.91 6.64 Kenyang 
 KEOBSU keo https://en.wikipedia.org/wiki/Bari_language http://listen.bible.is/KEOBSU/Matt/1/D 3.65233 30.7762 6316 7.16 10104 6.68 24:13:01 5.75 5.56 Kakwa 
 KERABT ker https://en.wikipedia.org/wiki/Kera_language http://listen.bible.is/KERABT/Matt/1/D 9.88165 15.1419 2720 8.03 10924 7.26 18:03:30 5.94 5.68 Kera 
-KEZLCN kez https://en.wikipedia.org/wiki/Kele_language_(Nigeria) missing 6.70286 8.39343 924 8.45 6020 7.46 09:37:34 6.55 6.23 Kukele 
+KEZLCN kez https://en.wikipedia.org/wiki/Kele_language_(Nigeria) http://listen.bible.is/KEZLCN/Matt/1/D 6.70286 8.39343 938 8.68 4991 7.79 08:43:39 6.89 6.59 Kukele 
 KHKMUB khk https://en.wikipedia.org/wiki/Mongolian_language http://listen.bible.is/KHKMUB/Matt/1 48.324 106.289 372 9.11 2975 7.44 06:14:32 6.64 6.42 Mongolian, Outer 
 KIABSC kia https://en.wikipedia.org/wiki/Kim_language http://listen.bible.is/KIABSC/Matt/1/D 9.79442 15.8936 6577 7.80 9659 6.83 15:34:02 6.03 5.83 Garap 
 KIAWBT kia https://en.wikipedia.org/wiki/Kim_language http://listen.bible.is/KIAWBT/Matt/1/D 9.79442 15.8936 4843 7.86 6614 6.33 12:16:37 5.17 4.99 Garap 
@@ -248,6 +286,8 @@ KJEWBT kje https://en.wikipedia.org/wiki/Kisar_language http://listen.bible.is/K
 KJHIBT kjh https://en.wikipedia.org/wiki/Khakas_language http://listen.bible.is/KJHIBT/Matt/1/D 50.7393 107.169 1001 6.37 7746 5.44 14:29:13 4.58 4.42 Khakas 
 KKIBST kki https://en.wikipedia.org/wiki/Kagulu_language http://listen.bible.is/KKIBST/Matt/1/D -6.38204 37.0534 9176 6.89 10348 6.63 21:00:24 5.78 5.63 Kikagulu 
 KKJWBT kkj https://en.wikipedia.org/wiki/Kako_language http://listen.bible.is/KKJWBT/Matt/1/D 3.79989 15.6282 6855 8.60 9760 7.88 17:39:16 6.09 5.84 Kako 
+KLENLI kle https://en.wikipedia.org/wiki/Kulung_language http://listen.bible.is/KLENLI/Matt/1/N 27.1606 87.5717 6649 6.37 7892 5.96 17:44:09 5.17 5.07 Kulung 
+KMRUBS kmr https://en.wikipedia.org/wiki/Northern_Kurdish http://listen.bible.is/KMRUBS/Matt/1/D 37.0 43.0 6131 8.07 11337 7.04 18:58:56 5.85 5.59 Kurmancî 
 KNETBL kne https://en.wikipedia.org/wiki/Kankanaey_language http://listen.bible.is/KNETBL/Matt/1/D 16.8548 120.689 11326 5.99 12224 5.68 22:53:54 4.63 4.53 Kankanaey 
 KNKBSL knk https://en.wikipedia.org/wiki/Kuranko_language http://listen.bible.is/KNKBSL/Matt/1/D 9.49325 -10.6122 4158 8.91 4757 9.21 11:03:47 8.86 8.35 Kuranko 
 KNOBSL kno https://en.wikipedia.org/wiki/Kono_language http://listen.bible.is/KNOBSL/Matt/1/D 8.67039 -10.9214 2528 8.71 10791 8.09 19:22:57 6.81 6.43 Kono 
@@ -443,11 +483,13 @@ PESTPV pes https://en.wikipedia.org/wiki/Persian_language http://listen.bible.is
 PIRWBT pir https://en.wikipedia.org/wiki/Wanano_language http://listen.bible.is/PIRWBT/Matt/1/D 0.50714 -69.5032 7502 7.29 19312 6.50 28:41:15 4.99 4.86 Piratapuyo 
 PISWBT pis https://en.wikipedia.org/wiki/Pijin_language http://listen.bible.is/PISWBT/Matt/1/D -9.567 160.137 10845 6.87 13755 6.13 25:51:52 5.30 5.19 Pijin 
 PKBBTL pkb https://en.wikipedia.org/wiki/Pokomo_language http://listen.bible.is/PKBBTL/Matt/1/D -2.31587 40.2897 9287 7.47 6004 6.54 09:54:13 5.62 5.36 Pokomo 
+PLSWYI pls https://en.wikipedia.org/wiki/Popolocan_languages http://listen.bible.is/PLSWYI/Matt/1/N 18.74 -97.5936 2795 7.08 4823 5.87 06:17:46 4.89 4.77 Ngigua, San Marcos Tlacoyalco 
 PLWWBT plw https://en.wikipedia.org/wiki/Palawano_language http://listen.bible.is/PLWWBT/Matt/1/D 8.83891 117.871 10737 6.78 12830 6.16 24:02:59 5.21 5.10 Palawano, Brooke's Point 
 PMFNTM pmf https://en.wikipedia.org/wiki/Pamona_language http://listen.bible.is/PMFNTM/Matt/1/D -1.62663 121.268 13124 6.74 17524 6.30 35:08:22 5.42 5.25 Bahasa Taa 
 POBWYI poh https://en.wikipedia.org/wiki/Poqomchi%27_language http://listen.bible.is/POBWYI/Matt/1/D 15.3586 -90.5813 10185 6.80 15841 6.26 39:45:16 5.18 5.07 Poqomchi Occidental 
 POEWYI poe https://en.wikipedia.org/wiki/Southern_Popoloca_language http://listen.bible.is/POEWYI/Matt/1/D 18.22245 -97.37923 2641 7.29 5265 6.54 09:07:25 5.54 5.42 Ngiva, San Juan Atzingo 
 POHBSG poh https://en.wikipedia.org/wiki/Poqomchi%27_language http://listen.bible.is/POHBSG/Matt/1/D 15.3586 -90.5813 9649 7.22 14757 6.47 26:11:01 5.30 5.20 Pokomchi, Eastern 
+POHPOC poh https://en.wikipedia.org/wiki/Poqomchi%27_language http://listen.bible.is/POHPOC/Matt/1/N 15.3586 -90.5813 11067 6.19 12028 5.29 17:11:06 4.75 4.61 Pokomchi, Eastern 
 POITBL poi https://en.wikipedia.org/wiki/Sierra_Popoluca http://listen.bible.is/POITBL/Matt/1/D 18.198 -94.9109 7717 8.82 14903 7.95 21:23:44 5.41 5.21 Popoluca de la Sierra 
 POLNCV pol https://en.wikipedia.org/wiki/Polish_language http://listen.bible.is/POLNCV/Matt/1/D 51.8439 18.6255 4349 8.17 5138 7.68 09:28:16 7.05 6.79 Polski 
 PORARA por https://en.wikipedia.org/wiki/Portuguese_language http://listen.bible.is/PORARA/Matt/1/D 39.91 -8.1 6796 7.79 9475 7.16 13:51:16 5.63 5.56 Português 
@@ -459,6 +501,7 @@ PRFWBT prf https://en.wikipedia.org/wiki/Paranan_language http://listen.bible.is
 PRSGNN prs https://en.wikipedia.org/wiki/Dari_language http://listen.bible.is/PRSGNN/Matt/1/D 31.0405 67.3593 1093 8.15 6152 6.90 12:46:34 6.26 6.03 Dari 
 PSELAI pse https://en.wikipedia.org/wiki/Bengkulu_language http://listen.bible.is/PSELAI/Matt/1/D -3.79673 103.137 12311 6.36 13325 6.57 23:49:11 5.16 5.03 Serawai 
 PTULAI ptu https://en.wikipedia.org/wiki/Bambam_language http://listen.bible.is/PTULAI/Matt/1/D -3.02759 119.201 13427 6.10 14796 5.78 22:05:13 4.33 4.23 Bambam 
+PUISMV pui https://en.wikipedia.org/wiki/Puinave_language http://listen.bible.is/PUISMV/Matt/1/N 3.92974 -67.6886 5089 5.68 13027 5.23 21:04:01 4.60 4.50 Puinave 
 PWWTBS pww https://en.wikipedia.org/wiki/Northern_Pwo_language http://listen.bible.is/PWWTBS/Matt/1/D 18.016 98.2709 4908 5.83 8259 5.53 23:17:26 4.36 4.24 Karen Pwo, Northern 
 PXMBSM pxm https://en.wikipedia.org/wiki/Mixe%E2%80%93Zoque_languages http://listen.bible.is/PXMBSM/Matt/1/D 16.92147 -95.67269 3511 7.11 13253 6.08 20:23:21 5.02 4.91 Mixe Quetzaltepec 
 QEJLLB qvh https://en.wikipedia.org/wiki/Quechuan_languages http://listen.bible.is/QEJLLB/Matt/1/D -9.15718 -76.3372 6218 7.19 14789 6.17 21:40:44 5.31 5.18 Quechua, Huamalies Dos de Mayo 
@@ -469,10 +512,23 @@ QUFLLB quf https://en.wikipedia.org/wiki/Lambayeque_Quechua http://listen.bible.
 QUHRBV quh https://en.wikipedia.org/wiki/South_Bolivian_Quechua http://listen.bible.is/QUHRBV/Matt/1/D -20.9201 -66.3331 9734 6.98 15742 6.55 27:40:41 5.53 5.40 Quechua, South Bolivian 
 QUHSBB quh https://en.wikipedia.org/wiki/South_Bolivian_Quechua http://listen.bible.is/QUHSBB/Matt/1/D -20.9201 -66.3331 3984 7.86 11372 6.96 20:02:08 5.59 5.49 Quechua, South Bolivian 
 QUJPMC quc https://en.wikipedia.org/wiki/K%27iche%27_language http://listen.bible.is/QUJPMC/Matt/1/D 14.5278 -91.1696 9271 7.73 17678 6.42 26:34:06 5.14 5.05 Quiche, Joyabaj 
+QULSBB qul https://en.wikipedia.org/wiki/North_Bolivian_Quechua http://listen.bible.is/QULSBB/Matt/1/D -14.4014 -68.7894 6706 7.48 13150 6.71 27:12:45 5.49 5.38 Quechua, North Bolivian 
+QUPTBL qup https://en.wikipedia.org/wiki/Kichwa_language http://listen.bible.is/QUPTBL/Matt/1/D -3.32733 -76.527 17558 6.57 18950 6.13 35:55:09 5.04 4.90 Quechua, Southern Pastaza 
 QUTIBS quc https://en.wikipedia.org/wiki/K%27iche%27_language http://listen.bible.is/QUTIBS/Matt/1/D 14.5278 -91.1696 3977 7.71 13650 7.12 23:34:08 5.81 5.64 Quiche, West Central 
+QUWHLE quw https://en.wikipedia.org/wiki/Kichwa_language http://listen.bible.is/QUWHLE/Matt/1/D -0.76271 -77.5404 11023 6.70 12406 6.25 18:28:05 5.33 5.16 Quichua, Tena Lowland 
+QUYSBU quy https://en.wikipedia.org/wiki/Ayacucho_Quechua http://listen.bible.is/QUYSBU/Matt/1/D -13.84714 -74.32246 8737 7.35 10450 7.16 20:25:04 5.65 5.46 Quechua, Ayacucho 
+QUZPBS quz https://en.wikipedia.org/wiki/Cusco_Quechua http://listen.bible.is/QUZPBS/Matt/1/D -14.0853 -71.7663 8486 7.10 11424 6.75 20:18:11 5.27 5.19 Quechua, Cuzco 
+QVCTBL qvc https://en.wikipedia.org/wiki/Cajamarca_Quechua http://listen.bible.is/QVCTBL/Matt/1/D -7.09314 -78.3214 12809 7.79 10878 7.84 23:20:03 6.87 6.63 Quechua, Cajamarca 
+QVNLLB qvn https://en.wikipedia.org/wiki/North_Jun%C3%ADn_Quechua http://listen.bible.is/QVNLLB/Matt/1/D -11.2132 -75.8128 13018 7.32 11926 7.31 24:06:37 5.82 5.67 Quechua, North Junin 
+QVOVAA qvo https://en.wikipedia.org/wiki/Kichwa_language http://listen.bible.is/QVOVAA/Matt/1/D -0.072525 -76.3889 13124 6.57 12759 6.44 18:50:11 5.28 5.14 Quichua, Napo Lowland 
 QVSTBL qvs https://en.wikipedia.org/wiki/Lowland_Peruvian_Quechua http://listen.bible.is/QVSTBL/Matt/1/D -6.9582 -76.6608 18421 6.94 17382 6.76 30:05:49 5.45 5.19 Quechua, San Martin 
 QVWTBL qvw https://en.wikipedia.org/wiki/Quechua_I http://listen.bible.is/QVWTBL/Matt/1/D -12.1809 -75.2055 8950 7.44 14390 6.70 23:25:07 5.70 5.54 Quechua, Huaylla Wanca 
+QVZWBT qvz https://en.wikipedia.org/wiki/Kichwa_language http://listen.bible.is/QVZWBT/Matt/1/D -1.88573 -76.0389 14289 6.24 15073 6.08 27:10:32 5.01 4.94 Quichua, Northern Pastaza 
 QWHLLB qwh https://en.wikipedia.org/wiki/Huaylas_Quechua http://listen.bible.is/QWHLLB/Matt/1/D -9.38709 -77.7768 10872 7.26 11879 6.60 20:07:27 4.96 4.79 Quechua, Huaylas 
+QXHWBT qxh https://en.wikipedia.org/wiki/Alto_Pativilca%E2%80%93Alto_Mara%C3%B1%C3%B3n%E2%80%93Alto_Huallaga_Quechua http://listen.bible.is/QXHWBT/Matt/1/D -9.85887 -75.4382 11588 7.89 9411 8.23 17:26:19 7.12 6.90 Quechua, Panao Huanuco 
+QXLQSV qxl https://en.wikipedia.org/wiki/Kichwa_language http://listen.bible.is/QXLQSV/Matt/1/D -1.35447 -78.3953 7242 6.00 12952 5.84 22:51:52 4.81 4.70 Quichua, Salasaka Highland 
+QXNWBT qxn https://en.wikipedia.org/wiki/Ancash_Quechua http://listen.bible.is/QXNWBT/Matt/1/D -8.97356 -77.4146 10377 6.26 13418 5.86 26:53:33 4.79 4.70 Quechua, Northern Conchucos Ancash 
+QXOLLB qxo https://en.wikipedia.org/wiki/Ancash_Quechua http://listen.bible.is/QXOLLB/Matt/1/D -9.30995 -76.9854 5952 6.96 15681 6.50 27:22:59 5.30 5.19 Quechua, Southern Conchucos Ancash 
 QXRBSE qxr https://en.wikipedia.org/wiki/Kichwa_language http://listen.bible.is/QXRBSE/Matt/1/D -2.48314 -78.9672 14833 5.79 16009 5.61 24:46:19 4.46 4.37 Quichua Cañar Highland 
 RAVNLP rav https://en.wikipedia.org/wiki/Sampang_language http://listen.bible.is/RAVNLP/Matt/1/D 27.2999 87.0019 5417 6.55 4393 6.34 12:45:05 5.74 5.57 Sampang 
 REJLAI rej https://en.wikipedia.org/wiki/Rejang_language http://listen.bible.is/REJLAI/Matt/1/D -3.33056 102.434 12056 6.42 13039 6.25 20:41:17 5.30 5.16 Rejang 
@@ -490,10 +546,12 @@ SASLAI sas https://en.wikipedia.org/wiki/Sasak_language http://listen.bible.is/S
 SBANVV sba https://en.wikipedia.org/wiki/Ngambay_language http://listen.bible.is/SBANVV/Matt/1/D 8.57051 15.414 658 8.57 3417 7.49 06:20:22 6.86 6.61 Ngambay 
 SBDABB khi https://en.wikipedia.org/wiki/Khoisan_languages http://listen.bible.is/SBDABB/Matt/1/D -23 22 2223 8.73 5769 8.33 10:55:19 7.79 7.45 San 
 SBLTBL xsb https://en.wikipedia.org/wiki/Sambal_language http://listen.bible.is/SBLTBL/Matt/1/D 15.5797 120.095 13255 6.16 14688 5.98 27:26:56 5.11 5.01 Sambal, Botolan 
+SDALAI sda https://en.wikipedia.org/wiki/Toraja-Sa%E2%80%99dan_language http://listen.bible.is/SDALAI/Matt/1/D -2.97144 119.829 8247 6.33 12138 6.32 22:23:28 5.18 5.11 Toraja 
 SEHBSM seh https://en.wikipedia.org/wiki/Sena_language http://listen.bible.is/SEHBSM/Matt/1/D -19.7933 34.9829 11626 7.15 13626 6.56 22:52:21 5.05 4.96 Chisena 
 SEYWBT sey https://en.wikipedia.org/wiki/Secoya_language http://listen.bible.is/SEYWBT/Matt/1/D -0.459785 -75.5547 7668 6.16 15781 6.10 32:25:44 4.99 4.84 Secoya 
 SGBTBL sgb https://en.wikipedia.org/wiki/Antsi_language http://listen.bible.is/SGBTBL/Matt/1/D 15.1954 120.459 8955 6.91 10692 6.38 23:15:09 5.50 5.37 Ayta Mag-antsi 
 SGWBSE sgw https://en.wikipedia.org/wiki/Chaha_language http://listen.bible.is/SGWBSE/Matt/1/D 8.11879 37.9891 495 7.21 7105 6.60 17:03:41 5.95 5.72 Gurage Chaha 
+SHIRBD shi https://en.wikipedia.org/wiki/Shilha_language http://listen.bible.is/SHIRBD/Matt/1/N 29.7854 -7.77879 8444 5.05 9711 4.96 16:11:02 4.77 4.68 تاشلحيت 
 SHKBSS shk https://en.wikipedia.org/wiki/Shilluk_language http://listen.bible.is/SHKBSS/Matt/1/D 9.85472 31.7926 1468 7.89 5535 6.88 09:08:10 5.98 5.68 Shilluk 
 SHPTBL shp https://en.wikipedia.org/wiki/Shipibo_language http://listen.bible.is/SHPTBL/Matt/1/D -7.17105 -74.8219 10219 6.96 15268 6.46 27:06:01 5.44 5.32 Shipibo 
 SIGWBT sig https://en.wikipedia.org/wiki/Paasaal_language http://listen.bible.is/SIGWBT/Matt/1/D 10.2004 -1.8048 1351 8.39 4925 7.49 09:08:11 7.03 6.69 Paasaal 
@@ -505,7 +563,11 @@ SMOBSP smo https://en.wikipedia.org/wiki/Samoan_language http://listen.bible.is/
 SNNWBT snn https://en.wikipedia.org/wiki/Siona_language http://listen.bible.is/SNNWBT/Matt/1/D 0.31733 -76.0237 3976 6.32 16708 5.91 32:41:37 4.77 4.64 Siona 
 SNWWBT snw https://en.wikipedia.org/wiki/Santrokofi_language http://listen.bible.is/SNWWBT/Matt/1/D 7.17462 0.42458 8529 6.92 13694 6.45 26:08:39 5.49 5.30 Selee 
 SOMSIM som https://en.wikipedia.org/wiki/Somali_language http://listen.bible.is/SOMSIM/Matt/1/D 4.778704 45.152856 6432 8.45 6147 8.28 16:21:21 7.38 7.12 Somali 
+SOYSIM soy https://en.wikipedia.org/wiki/Yobe_language http://listen.bible.is/SOYSIM/Matt/1/D 9.94366 1.33302 3165 8.47 10299 7.19 14:43:10 5.99 5.72 Sola 
 SPNBDA spa https://en.wikipedia.org/wiki/Spanish_language http://listen.bible.is/SPNBDA/Matt/1/D 40.4414 -1.11788 10604 6.86 11190 6.21 16:35:14 5.28 5.12 Español 
+SPNDHH spa https://en.wikipedia.org/wiki/Spanish_language http://listen.bible.is/SPNDHH/Matt/1/D 40.4414 -1.11788 7990 7.96 7767 7.91 15:17:59 6.94 6.68 Español 
+SPNNVI spa https://en.wikipedia.org/wiki/Spanish_language http://listen.bible.is/SPNNVI/Matt/1/D 40.4414 -1.11788 5599 8.12 4134 7.83 07:19:10 7.44 7.09 Español 
+SPNR95 spa https://en.wikipedia.org/wiki/Spanish_language http://listen.bible.is/SPNR95/Matt/1/D 40.4414 -1.11788 6692 8.01 5294 7.86 09:32:08 6.88 6.66 Español 
 SPNWTC spa https://en.wikipedia.org/wiki/Spanish_language http://listen.bible.is/SPNWTC/Matt/1/D 40.4414 -1.11788 10272 7.59 10293 6.74 15:18:41 5.52 5.34 Español 
 SPPTBL spp https://en.wikipedia.org/wiki/Supyire_language http://listen.bible.is/SPPTBL/Matt/1/D 11.632 -5.87709 4033 8.46 6680 8.26 14:43:44 7.94 7.59 Supyire 
 SPYWBT spy https://en.wikipedia.org/wiki/Sabaot_language http://listen.bible.is/SPYWBT/Matt/1/D 1.01297 34.6664 2859 8.01 5565 8.06 14:17:43 7.62 7.29 Sabaot 
@@ -533,6 +595,7 @@ TEMBSL tem https://en.wikipedia.org/wiki/Temne_language http://listen.bible.is/T
 TEOBSU teo https://en.wikipedia.org/wiki/Teso_language http://listen.bible.is/TEOBSU/Matt/1/D 1.18321 33.9394 7745 7.70 10277 7.09 17:33:58 5.86 5.72 Ateso 
 TERTBL ter https://en.wikipedia.org/wiki/Ter%C3%AAna_language http://listen.bible.is/TERTBL/Matt/1/D -20.6614 -56.0329 10155 7.13 15583 6.49 35:14:21 5.02 4.92 Terena 
 TFRWBT tfr https://en.wikipedia.org/wiki/Teribe_language http://listen.bible.is/TFRWBT/Matt/1/D 9.067 -82.9631 1974 7.40 9821 6.63 16:05:41 5.39 5.26 Teribe 
+TGKIBT tgk https://en.wikipedia.org/wiki/Tajik_language http://listen.bible.is/TGKIBT/Matt/1/D 38.8213 68.5549 900 7.32 2652 6.78 04:49:43 6.28 6.04 Tajik 
 TGLPBS tgl https://en.wikipedia.org/wiki/Tagalog_language http://listen.bible.is/TGLPBS/Matt/1/D 14.06 121.747 10595 6.83 10335 6.51 19:28:06 5.43 5.28 Tagalog 
 TGOTBL tgo https://en.wikipedia.org/wiki/Sudest_language http://listen.bible.is/TGOTBL/Matt/1/D -11.5229 153.488 7568 6.41 9901 6.12 20:33:27 5.00 4.88 Sudest 
 TGPWBT tgp https://en.wikipedia.org/wiki/Tangoa_language http://listen.bible.is/TGPWBT/Matt/1/D -15.5643 166.958 5269 6.97 5034 7.09 12:39:57 6.62 6.53 Tangoa 
@@ -555,6 +618,7 @@ TPTTBL tpt https://en.wikipedia.org/wiki/Tepehua_languages http://listen.bible.i
 TRKBST tur https://en.wikipedia.org/wiki/Turkish_language http://listen.bible.is/TRKBST/Matt/1/D 39.8667 32.8667 2886 8.20 7097 7.81 13:20:31 6.81 6.50 Türkçe 
 TRKWTC tur https://en.wikipedia.org/wiki/Turkish_language http://listen.bible.is/TRKWTC/Matt/1/D 39.8667 32.8667 3973 8.47 4926 8.59 08:58:57 8.22 7.90 Türkçe 
 TRSUTI trs https://en.wikipedia.org/wiki/Trique_language http://listen.bible.is/TRSUTI/Matt/1/D 17.1628 -97.8547 2068 7.05 5272 6.00 11:43:26 5.22 5.05 Triqui Chicahuaxtla 
+TS1BSM tso https://en.wikipedia.org/wiki/Tsonga_language http://listen.bible.is/TS1BSM/Matt/1/N -23.5754 31.8105 11409 6.08 13262 5.24 20:47:10 4.49 4.39 Tsonga 
 TSZBSM tsz https://en.wikipedia.org/wiki/Pur%C3%A9pecha_language http://listen.bible.is/TSZBSM/Matt/1/D 19.2467 -101.631 5346 7.77 4271 8.00 10:32:10 7.29 6.99 Purepecha 
 TTCWBT ttc https://en.wikipedia.org/wiki/Tektitek_language http://listen.bible.is/TTCWBT/Matt/1/D 15.4599 -92.1136 9443 6.24 11976 6.04 26:06:02 5.08 4.98 Tektiteko 
 TTRIBT tat https://en.wikipedia.org/wiki/Tatar_language http://listen.bible.is/TTRIBT/Matt/1/D 55.0 50.0 444 8.07 2736 7.43 05:07:10 7.03 6.82 Tatar 
@@ -574,6 +638,7 @@ TZHSBM tzh https://en.wikipedia.org/wiki/Tzeltal_language http://listen.bible.is
 TZTWBT tzj https://en.wikipedia.org/wiki/Tz%E2%80%99utujil_language http://listen.bible.is/TZTWBT/Matt/1/D 14.6351 -91.2012 6410 7.35 15018 6.75 32:18:46 5.50 5.35 Tzutujil, Western 
 UDMIBT udm https://en.wikipedia.org/wiki/Udmurt_language http://listen.bible.is/UDMIBT/Matt/1/D 56.12921 52.63548 1846 7.56 9968 5.90 15:31:45 5.20 5.06 Udmurt 
 UDUSIM udu https://en.wikipedia.org/wiki/Uduk_language http://listen.bible.is/UDUSIM/Matt/1/D 9.16012 34.2293 8341 7.19 12825 6.85 30:26:22 5.66 5.51 Uduk 
+UI1UMK uig https://en.wikipedia.org/wiki/Uyghur_language http://listen.bible.is/UI1UMK/Matt/1/N 43.67 79.75 3917 7.39 6850 6.24 13:10:52 5.37 5.27 Уйғурчә 
 URATBL ura https://en.wikipedia.org/wiki/Urarina_language http://listen.bible.is/URATBL/Matt/1/D -4.44006 -75.4211 10207 6.54 13525 6.22 30:12:15 4.92 4.78 Urarina 
 URBWBT urb https://en.wikipedia.org/wiki/Ka%27apor_language http://listen.bible.is/URBWBT/Matt/1/D -2.46455 -46.2204 38362 6.77 24008 7.25 31:03:01 4.67 4.50 Ka’apor 
 URDWTC urd https://en.wikipedia.org/wiki/Urdu http://listen.bible.is/URDWTC/Matt/1/D 25.0 67.0 1522 7.30 6614 6.62 19:09:57 6.13 5.93 Urdu 
@@ -584,6 +649,7 @@ VUNBST vun https://en.wikipedia.org/wiki/Central_Kilimanjaro_language http://lis
 WMWWYI wmw https://en.wikipedia.org/wiki/Mwani_language http://listen.bible.is/WMWWYI/Matt/1/D -12.5821 40.4601 12870 6.56 13402 6.50 22:11:45 5.39 5.23 Mwani 
 XALIBT xal https://en.wikipedia.org/wiki/Oirat_language http://listen.bible.is/XALIBT/Matt/1/D 46.566667 45.316667 922 7.79 4460 6.90 09:26:57 6.19 5.96 Kalmyk-Oirat 
 XEDWYI xed https://en.wikipedia.org/wiki/Hdi_language http://listen.bible.is/XEDWYI/Matt/1/D 10.942 13.6881 6403 8.06 10801 7.49 20:43:24 5.72 5.50 Hdi 
+XMMLAI xmm https://en.wikipedia.org/wiki/Manado_Malay http://listen.bible.is/XMMLAI/Matt/1/N 1.48099 124.843 12639 5.52 13987 5.20 24:40:53 3.91 3.83 Manadonese Malay 
 XO2IBS xon https://en.wikipedia.org/wiki/Konkomba_language http://listen.bible.is/XO2IBS/Matt/1/D 9.82224 0.2783 9977 7.95 10804 7.75 17:39:14 6.57 6.25 Konkomba, Likpakpaaln 
 XOGBSU xog https://en.wikipedia.org/wiki/Soga_language http://listen.bible.is/XOGBSU/Matt/1/D 0.40456 33.3942 9281 7.06 9360 6.88 18:03:33 5.64 5.41 Lusoga 
 XRBWBT xrb https://en.wikipedia.org/wiki/Karaboro_languages http://listen.bible.is/XRBWBT/Matt/1/D 10.4987 -4.52253 7405 8.35 11660 8.06 22:12:01 7.07 6.72 Karaboro 
@@ -596,5 +662,7 @@ XTDTBL xtd https://en.wikipedia.org/wiki/Tilantongo_Mixtec http://listen.bible.i
 XTMTBL xtm https://en.wikipedia.org/wiki/Pe%C3%B1asco_Mixtec http://listen.bible.is/XTMTBL/Matt/1/D 17.2837 -97.5413 10741 6.17 12915 5.61 25:40:14 4.77 4.64 Mixtec, Magdalena Peñasco 
 XUOWBT xuo https://en.wikipedia.org/wiki/Kuo_language http://listen.bible.is/XUOWBT/Matt/1/D 7.97771 15.4843 4250 7.84 12620 6.72 23:18:00 5.55 5.29 Kuo 
 YAZTBL yaz https://en.wikipedia.org/wiki/Yak%C3%B6_language http://listen.bible.is/YAZTBL/Matt/1/D 5.91483 8.0933 2286 7.90 6769 6.60 17:23:32 6.09 5.85 Lokaa 
+YCLNVS ycl https://en.wikipedia.org/wiki/Lolopo_language http://listen.bible.is/YCLNVS/Matt/1/N 25.50051 101.30185 12373 8.47 14497 7.22 25:54:33 5.75 5.61 Elo 
 YUASBM yua https://en.wikipedia.org/wiki/Yucatec_Maya_language http://listen.bible.is/YUASBM/Matt/1/D 18.7757 -88.9567 6992 7.76 11498 7.03 20:23:29 5.76 5.60 Maya, Yucatan 
 ZLMAVB may https://en.wikipedia.org/wiki/Malay_language http://listen.bible.is/ZLMAVB/Matt/1/D 3.8 101.41 11043 6.38 12132 6.03 19:12:31 5.03 4.94 Malay 
+ZYPWBT zyp https://en.wikipedia.org/wiki/Zyphe_language http://listen.bible.is/ZYPWBT/Matt/1/D 22.524 93.264 8277 7.27 7416 7.22 19:37:22 6.46 6.36 Zyphe 

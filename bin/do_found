@@ -334,6 +334,8 @@ then
         mkdir -p download/html
     fi
     echo $uuu >download/starturl
+    # We (often) need a suffix character to get the full page
+    dsuffix=`echo $uuu | awk '{if ($1 ~ /.*D$/) print "D"; else print "N"}'`
     wget -O xxx.html $uuu
     grep "var languageName" xxx.html | sed 's/^[^"]*"//;s/".*$//' >download/languagename
     grep "var damIdBase" xxx.html | sed 's/^[^"]*"//;s/".*$//' >download/languageid
@@ -357,7 +359,8 @@ then
         
         next=`grep 'id="next-chapter-link"' xxx.html | sed 's/.*next-chapter-link.><a href=.//;s/".*$//'`
         lnext=$next
-        uuu=http://listen.bible.is$next
+        # We add the /N or /D because we sometimes have to
+        uuu=http://listen.bible.is${next}"/"${dsuffix}
         echo $uuu >>yyy.html
         if [ "$next" = "" ]
         then
@@ -439,6 +442,7 @@ then
         mkdir txt
     fi
 
+    shift
     for i in $*
     do
        echo $i
@@ -1134,6 +1138,69 @@ then
             done
         fi
     fi
+    
+    exit 0
+fi
+
+if [ "$1" = "make_phone_alignments" ]
+then
+    # From sentence alignments (from fast_make_align or full_make_align)
+    # Get the phonement alignments (and build festival utterances for
+    # easy dumping of more elaborate word/syllable/phone features
+
+    mkdir v_ph_aligns
+        if [ $# = 1 ]
+    then
+        if [ -f aligned/etc/languageid ]
+        then
+            # try to get a C variable name for the language
+            VLANG=`cat aligned/etc/languageid | tr A-Z a-z | awk '{print substr($1,1,3)}'`
+            VSPK=`cat aligned/etc/languageid | tr A-Z a-z | awk '{print substr($1,4)}'`
+        fi
+    fi
+    if [ "$VLANG" = "" ]
+    then
+        VLANG=rt
+    fi
+    if [ "$VSPK" = "" ]
+    then
+        VSPK=rt
+    fi
+    cd v_ph_aligns
+    $FESTVOXDIR/src/clustergen/setup_cg cmu $VLANG $VSPK
+
+    if [ -f ../aligned/etc/txt.done.data ]
+    then
+        cp -pr ../aligned/etc/txt.done.data etc/txt.done.data
+    else
+        echo cannot find aligned/etc/txt.done.data 
+        exit 0
+    fi
+    
+    awk '{print $2}' etc/txt.done.data |
+        while read x
+        do
+            ln ../aligned/wav/$x.wav wav
+        done
+    $FESTVOXDIR/src/grapheme/make_cg_grapheme
+
+    PARALLEL=parallel
+
+    # Initial labeling
+
+    ./bin/do_build $PARALLEL build_prompts
+    ./bin/do_build label
+
+    ./bin/do_clustergen $PARALLEL build_utts
+
+    ./bin/do_clustergen generate_statenames
+    ./bin/do_clustergen generate_filters
+
+
+    cd ..
+
+    echo "Phone alignments are in v_ph_aligns/lab/*.lab"
+    echo "Utterances structures are in v_ph_aligns/festival/utts/*.utt"
     
     exit 0
 fi
