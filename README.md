@@ -130,9 +130,9 @@ utterance with
     nohup ../bin/do_found make_phone_alignments &
 
 This may take several hours to run the hmm aligner.  The generated
-phone alignments are in v_ph_aligns/lab/*.lab in Xlabel ascii format.
+phone alignments are in v_ph_aligns/lab/\*.lab in Xlabel ascii format.
 Full Festival utterances with all alignments and linked with
-syllables, words etc are available in v_ph_aligns/festival/utts/*.utt.
+syllables, words etc are available in v_ph_aligns/festival/utts/\*.utt.
 See http://www.festvox.org/bsv/x1902.html for an example of dumping
 features and model building.
 
