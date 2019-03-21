@@ -278,7 +278,7 @@ then
         echo Pass 0: number of utterances without nan `cat v0/etc/txt.done.data | awk 'END {print NR}'`
         (cd v0; ./bin/find_db_duration etc/txt.done.data)
         tail -2 v0/ehmm/mod/log100.txt
-        grep MCD v0/mcd-base.out
+        grep "MCD " v0/mcd-base.out
         pass="Pass 1:"
     fi
     if [ -d v ]
@@ -286,7 +286,7 @@ then
         echo $pass number of utterances `cat v/etc/txt.done.data.withnan | awk 'END {print NR}'`
         (cd v; ./bin/find_db_duration etc/txt.done.data)
         tail -2 v/ehmm/mod/log100.txt
-        grep MCD v/mcd-base.out
+        grep "MCD " v/mcd-base.out
         echo $pass number of utterances without nan `cat v/etc/txt.done.data | awk 'END {print NR}'`
     fi
     if [ -d v_rfs ]
@@ -294,7 +294,7 @@ then
         echo RFS: number of utterances `cat v_rfs/etc/txt.done.data | awk 'END {print NR}'`
         (cd v_rfs; ./bin/find_db_duration etc/txt.done.data)
         tail -2 v_rfs/ehmm/mod/log100.txt
-        grep MCD v_rfs/mcd-*.out
+        grep "MCD " v_rfs/mcd-*.out
     fi        
 
     exit 0
@@ -337,6 +337,7 @@ then
     # We (often) need a suffix character to get the full page
     dsuffix=`echo $uuu | awk '{if ($1 ~ /.*D$/) print "D"; else print "N"}'`
     wget -O xxx.html $uuu
+    exit
     grep "var languageName" xxx.html | sed 's/^[^"]*"//;s/".*$//' >download/languagename
     grep "var damIdBase" xxx.html | sed 's/^[^"]*"//;s/".*$//' >download/languageid
     rm -f xxx.html
@@ -1361,7 +1362,7 @@ then
     # Collect sliced utts
     $this v_collect
 
-    # Pass 1 (v/)
+    # Pass 0 (v/)
     # Do some alignment checks to remove outliers
     $this v_rm_nan_aligned
     # Build a synthetic voice
@@ -1370,7 +1371,7 @@ then
     $this v_check
 
     # Reslice with first level target-language language model
-    # movc v/ to v0/ and starts again with better acoustic model
+    # move v/ to v0/ and starts again with better acoustic model
     $this v_reinit_target_lang
     $this v_islice_para download/flist `v/bin/find_num_available_cpu`
     $this v_collect

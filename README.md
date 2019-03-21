@@ -135,6 +135,13 @@ Full Festival utterances with all alignments and linked with
 syllables, words etc are available in v_ph_aligns/festival/utts/*.utt.
 See http://www.festvox.org/bsv/x1902.html for an example of dumping
 features and model building.
+
+# Citations
+
+For more details, see
+
+Alan W Black "CMU Wilderness Multilingual Speech Dataset" ICASSP 2019,
+Brighton, UK.
    
 # Acknowledgments
 
