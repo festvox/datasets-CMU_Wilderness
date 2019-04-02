@@ -110,9 +110,10 @@ lexicon in NANTTV/aligned/etc/pronunciation_lex
 You can do the full alignment creation if you want.  Our alignments
 certainly can be improved on with better acoustic models,
 pronunciations etc.  If you are interested in re-aligning you can do so
-with the command
+with the command and you need to export BIBLEIS_API_KEY env variable 
 
-    nohup ./bin/do_found full_make_align http://listen.bible.is/NANTTV/Matt/1/D &
+    export BIBLEIS_API_KEY=123123123123123 
+    nohup ./bin/do_found full_make_align http://live.bible.is/NANTTV/Matt/1/D &
 
 This may take around 7 days on a 12 core machine.  It needs about 150GB of
 diskspace (which can be reduced with the command ../bin/do_found tidy_up at the
