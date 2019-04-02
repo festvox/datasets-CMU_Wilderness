@@ -324,60 +324,45 @@ fi
 if [ "$1" = "get_from_bibleis" ]
 then
     ## For bible.is, this is what has been collected in the Wilderness DB
-    #uuu=http://listen.bible.is/CEBRPV/Matt/1/D
-    uuu=$2
+    #  get API key from https://dbp4.org and export it as BIBLEIS_API_KEY
+    #  $2=http://live.bible.is/CEBRPV/Matt/1/D
+    languageid=`echo $2 | sed 's/^.*bible.is.//;s+/.*$++'`
+    api_index="https://api.dbp4.org/bibles/$languageid?v=4&key=$BIBLEIS_API_KEY"
 
     if [ ! -d download ]
     then
         mkdir -p download/mp3
         mkdir -p download/txt
-        mkdir -p download/html
     fi
-    echo $uuu >download/starturl
-    # We (often) need a suffix character to get the full page
-    dsuffix=`echo $uuu | awk '{if ($1 ~ /.*D$/) print "D"; else print "N"}'`
-    wget -O xxx.html $uuu
-    exit
-    grep "var languageName" xxx.html | sed 's/^[^"]*"//;s/".*$//' >download/languagename
-    grep "var damIdBase" xxx.html | sed 's/^[^"]*"//;s/".*$//' >download/languageid
-    rm -f xxx.html
+    echo $2 >download/starturl
+    echo $languageid > download/languageid
+    wget -O books.json $api_index
 
-    while /bin/true
-    do
-        wget -O xxx.html $uuu
-        mp3=`grep audioUrl xxx.html | sed 's/[^"]*"//;s/";.*$//'`
-        echo $mp3
-        if [ "$mp3" = "" ]
-        then
-            rm -f xxx.html yyy.html
-            exit
-        fi
-        fname=`basename $mp3 .mp3`
-        echo $fname >>download/flist
-        cp -pr xxx.html download/html/$fname.html
-        wget -O download/mp3/$fname.mp3 http:$mp3
-        grep 'id="chapter-content"' xxx.html | sed 's/<[^>]*>/ /g' | sed 's/Copyrighted Material.*$//' >download/txt/$fname.txt
-        
-        next=`grep 'id="next-chapter-link"' xxx.html | sed 's/.*next-chapter-link.><a href=.//;s/".*$//'`
-        lnext=$next
-        # We add the /N or /D because we sometimes have to
-        uuu=http://listen.bible.is${next}"/"${dsuffix}
-        echo $uuu >>yyy.html
-        if [ "$next" = "" ]
-        then
-            rm -f xxx.html yyy.html
-            exit
-        fi
-        if [ "$lnext" = "next" ]
-        then
-            rm -f xxx.html yyy.html
-            exit
-        fi
-        rm -f xxx.html
-    done
-    rm -f yyy.html
+    grep -o 'language":"[^"]*' books.json | cut -d'"' -f3 > download/languagename
+
+    fieldsetid=`grep -o 'dbp-prod":\[{"id":"[^"]*' books.json | cut -d'"' -f5`
+    api_audio="https://api.dbp4.org/bibles/filesets/$fieldsetid?v=4&key=$BIBLEIS_API_KEY&type=audio"
+    wget -O audio.json $api_audio
+
+    sed -i 's/},{/},\n{/g' audio.json
+    sed -i 's/{"data"\:[//g' audio.json
+    while read json_object; do
+      bookid=`echo $json_object | cut -d'"' -f4`
+      chapterid=`echo $json_object | cut -d'"' -f11 | sed 's/[:,]//g'`
+      mp3=`echo $json_object | grep '"path":"[^"]*' -o | sed 's/"path":"//g'`
+
+      fname=`echo $mp3 | grep '[^/]*\.mp3' -o | sed 's/.mp3//g'`
+      echo $fname >>download/flist
+      wget -O download/mp3/$fname.mp3 $mp3
+
+      api_text="https://api.dbp4.org/bibles/filesets/$languageid/$bookid/$chapterid?v=4&key=$BIBLEIS_API_KEY&type=text"
+      wget -O $fname.json $api_text
+      grep -o 'verse_text":"[^"]*' $fname.json | cut -d'"' -f3 > download/txt/$fname.txt
+      rm $fname.json
+    done < audio.json
+
     exit 0
-fi    
+fi
 
 if [ "$1" = "mp4_to_wav" ]
 then
@@ -421,7 +406,7 @@ then
     # Uses an F0 extractor to find the speech (and hence the non-speech)
     mkdir ps
     cd ps
-    $FESTVOXDIR/src/clustergen/setup_cg ps ps ps 
+    $FESTVOXDIR/src/clustergen/setup_cg ps ps ps
     ln ../wav/*.wav wav
     ls wav/*.wav | sed 's/^wav./( /;s/.wav$/ "" )/' >etc/txt.done.data
 
@@ -432,36 +417,9 @@ then
     mv wav wav_unpruned
     mkdir wav
     ln ps/wav/*.wav wav
-    
-    exit 0
-fi    
-
-if [ "$1" = "txt_from_bibleis_txt" ]
-then
-    if [ ! -d txt ]
-    then
-        mkdir txt
-    fi
-
-    shift
-    for i in $*
-    do
-       echo $i
-       cat $i |
-           html2text -utf8 |
-           sed -e 'y/\t/\n/' |
-           awk '{for (i=1; i<=NF; i++)
-                 {
-                    if ($i ~ /[0-9][0-9]*/ )
-                       printf("\n\n");
-                    printf("%s ",$i);
-                 }}
-                 END {printf("\n\n")}' |
-           tr -d [0-9] >txt/`basename $i`
-    done
 
     exit 0
-fi   
+fi
 
 if [ "$1" = "ltf_to_ttd" ]
 then
@@ -736,7 +694,7 @@ then
     # Used when running the core utterance aligned to check how many were
     # found
 
-    echo -n "Chapters " 
+    echo -n "Chapters "
     ls -d v/is_do/*/twav | wc -l
     echo -n "Utts     "
     ls -d v/is_do/*/twav/*.wav | wc -l
@@ -753,7 +711,7 @@ then
     cd $CHAP
     cp -pr ../../../data/$CHAP.data etc/txt.done.data
     $ESTDIR/bin/ch_wave -start 0 ../../../wav/$CHAP.wav -o bwav/bwav.wav
-    
+
     $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh phseq_lang ../..
     $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh phseqint
     $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh doseg
@@ -765,14 +723,14 @@ fi
 if [ "$1" = "v_islice_chap_guess" ]
 then
     CHAP=$2
-    OFFSET=$3 
+    OFFSET=$3
     cd v/is_do
     mkdir $CHAP
     cp -pr ../is/* $CHAP
     cd $CHAP
     cp -pr ../../../data/$CHAP.data etc/txt.done.data
     $ESTDIR/bin/ch_wave -start $OFFSET ../../../wav/$CHAP.wav -o bwav/bwav.wav
-    
+
     $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh phseq_lang ../..
     $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh phseqint
     $FESTVOXDIR/src/interslice/scripts/do_islice_v2.sh doseg
@@ -812,12 +770,12 @@ then
             rm -rf $i
         fi
     done
-    
+
     ./bin/reduce_prompts etc/txt.done.data.all wav/*.wav >etc/txt.done.data
 
     echo LOG `cat etc/txt.done.data | wc -l` utterances
     echo LOG `./bin/find_db_duration etc/txt.done.data`
-    
+
     exit 0
 fi
 
@@ -870,7 +828,7 @@ then
    (lambda (w)
      (format trfd "%s " (item.name w))
      (format lexfd "%s " (item.name w))
-     (mapcar 
+     (mapcar
       (lambda (syl)
         (mapcar
          (lambda (seg)
@@ -967,7 +925,7 @@ then
     then
         cp -pr v_rfs/etc/txt.done.data aligned/etc/txt.done.data.rfs
     fi
-    
+
     exit 0
 fi
 
@@ -1039,7 +997,7 @@ then
        for i in `cat mlist mlistf0`
        do
           cp -pr trees_$i keep
-       done	 
+       done
        rm -rf trees_*
        mv keep/* .
        rmdir keep
@@ -1049,7 +1007,7 @@ then
     cd ..
 
     exit 0
-fi	
+fi
 
 if [ "$1" = "get_aligned" ]
 then
@@ -1084,7 +1042,7 @@ then
         done >x2
         paste x1 x2 | awk '{print $1,$1,"0.0",$2}' >aligned/etc/segments
         rm -f x1 x2
-        
+
     fi
 
     if [ -f v_rfs/etc/txt.done.data ]
@@ -1139,7 +1097,7 @@ then
             done
         fi
     fi
-    
+
     exit 0
 fi
 
@@ -1174,10 +1132,10 @@ then
     then
         cp -pr ../aligned/etc/txt.done.data etc/txt.done.data
     else
-        echo cannot find aligned/etc/txt.done.data 
+        echo cannot find aligned/etc/txt.done.data
         exit 0
     fi
-    
+
     awk '{print $2}' etc/txt.done.data |
         while read x
         do
@@ -1202,7 +1160,7 @@ then
 
     echo "Phone alignments are in v_ph_aligns/lab/*.lab"
     echo "Utterances structures are in v_ph_aligns/festival/utts/*.utt"
-    
+
     exit 0
 fi
 
@@ -1231,7 +1189,7 @@ then
         awk '{if (NF > 1) print $0}' >$languageid/$languageid.segments
     awk '{print $2,$(NF-1)}' v/etc/txt.done.data.uu >$languageid/$languageid.scores
     awk '{print $2}' v_rfs/etc/txt.done.data >$languageid/$languageid.rfs
-    
+
     exit 0
 fi
 
@@ -1273,8 +1231,7 @@ then
     if [ ! -d wav ]
     then
         $this mp3_to_wav download/mp3/*.mp3
-        $this txt_from_bibleis_txt download/txt/*.txt
-        $this txt_to_ttd txt/*.txt
+        $this txt_to_ttd download/txt/*.txt
         $this prune_silences
     fi
 
@@ -1301,7 +1258,7 @@ then
             lll=`grep "( $fileid " data/$bfileid.data | head -1 | sed 's/ )$//'`
             echo $lll $dur $score ")"
         done >v/etc/txt.done.data.uu
-    
+
     $this get_aligned
 
     paste $languageid/$languageid.rfs |
@@ -1316,7 +1273,7 @@ fi
 if [ "$1" = "full_make_align" ]
 then
     # This is a big process, that can take 6 days on a 8-thread machine
-    #starturl=http://listen.bible.is/CEBRPV/Matt/1/D
+    #starturl=http://live.bible.is/CEBRPV/Matt/1/D
     starturl=$2
     languageid=`echo $2 | sed 's/^.*bible.is.//;s+/.*$++'`
     this=$0
@@ -1343,8 +1300,7 @@ then
 
     # Convert downloaded mp3s and txt into our format
     $this mp3_to_wav download/mp3/*.mp3
-    $this txt_from_bibleis_txt download/txt/*.txt
-    $this txt_to_ttd txt/*.txt
+    $this txt_to_ttd download/txt/*.txt
 
     # Remove some extra silence from the waveforms
     $this prune_silences
