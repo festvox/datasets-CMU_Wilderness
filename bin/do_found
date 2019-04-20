@@ -1178,10 +1178,11 @@ then
         exit 0
     fi
     
+    mkdir wav
     awk '{print $2}' etc/txt.done.data |
         while read x
         do
-            ln ../aligned/wav/$x.wav wav
+            ln ../aligned/wav/$x.wav wav/
         done
     $FESTVOXDIR/src/grapheme/make_cg_grapheme
 
